@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Vista.ProyectoInfoIII;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -18,7 +19,10 @@ public class Usuario {
     protected String nombre;
     protected String usuario;
     protected String passwd;
-    protected ArrayList <String> listUsuarios = new ArrayList<>();
+    protected ArrayList <Usuario> listUsuarios = new ArrayList<>();
+
+    public Usuario() {
+    }
     
     public Usuario(String nombre,String usuario, String pass){
         this.nombre=nombre;
@@ -50,11 +54,11 @@ public class Usuario {
         this.passwd = passwd;
     }
 
-    public ArrayList<String> getListUsuarios() {
+    public ArrayList<Usuario> getListUsuarios() {
         return listUsuarios;
     }
 
-    public void setListUsuarios(ArrayList<String> listUsuarios) {
+    public void setListUsuarios(ArrayList<Usuario> listUsuarios) {
         this.listUsuarios = listUsuarios;
     }
     
@@ -67,6 +71,22 @@ public class Usuario {
         //Lista de usuarios obtenida de base de datos y buscar us.
       
         
+    }
+    
+    public static void registrar(){
+        
+        Scanner sc = new Scanner(System.in);
+        Usuario us = new Usuario();
+        System.out.println("Registro de usuarios");
+        System.out.println("Ingrese el nombre del usuario");
+	String nombre =sc.nextLine();
+        System.out.println("Ingrese el usuario");
+	String user =sc.nextLine();
+        System.out.println("Ingrese contraseña");
+	String pass =sc.nextLine();
+        us = new Usuario(nombre, user, pass);
+        us.listUsuarios.add(us);
+        ProyectoInfoIII.showMenu();
     }
     
 }

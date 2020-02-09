@@ -23,7 +23,7 @@ public class ProyectoInfoIII {
            
     }
     
-    private static void showMenu() {
+    public static void showMenu() {
        
         int exit = 0;
         
@@ -50,7 +50,7 @@ public class ProyectoInfoIII {
                             break;
 
                     case 2:
-                            //Usuario.registrar();
+                            Usuario.registrar();
                             break;
                             
                     default:
