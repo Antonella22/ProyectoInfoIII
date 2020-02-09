@@ -5,7 +5,6 @@
  */
 package Control;
 
-import Vista.ProyectoInfoIII;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -19,8 +18,9 @@ public class Usuario {
     protected String nombre;
     protected String usuario;
     protected String passwd;
-    protected ArrayList <Usuario> listUsuarios = new ArrayList<>();
-
+    //public ArrayList <Usuario> listUsuarios = new ArrayList<>();   
+    public static ArrayList <Usuario> listUsuarios;
+    
     public Usuario() {
     }
     
@@ -61,32 +61,61 @@ public class Usuario {
     public void setListUsuarios(ArrayList<Usuario> listUsuarios) {
         this.listUsuarios = listUsuarios;
     }
-    
+
     public static void login(){
         
         System.out.println("Ingresar Usuario");
         Scanner sc = new Scanner(System.in);
 	String user=sc.nextLine();
-	
-        //Lista de usuarios obtenida de base de datos y buscar us.
-      
+        
+        //Recorrer y buscar usuario en lista para verificar existencia.
+        for(Iterator<Usuario> it= listUsuarios.iterator();it.hasNext();){     
+                Usuario us=it.next();
+                if(us.getUsuario().equals(user)){     //Si usuario existe en la lista se muestran las siguientes opciones
+                    Desecho.showOptions(user);       //tipo de usuario como parametro para mostrar las opciones           
+                }else{
+                    System.out.println("Usuario no Registrado, Registrarse primero \n");
+                    registrar();     
+                }
+        } 
         
     }
     
     public static void registrar(){
-        
-        Scanner sc = new Scanner(System.in);
-        Usuario us = new Usuario();
+      
+        Scanner sc = new Scanner(System.in);       
         System.out.println("Registro de usuarios");
         System.out.println("Ingrese el nombre del usuario");
 	String nombre =sc.nextLine();
         System.out.println("Ingrese el usuario");
 	String user =sc.nextLine();
-        System.out.println("Ingrese contraseña");
-	String pass =sc.nextLine();
-        us = new Usuario(nombre, user, pass);
-        us.listUsuarios.add(us);
-        ProyectoInfoIII.showMenu();
+        
+        //Se recorre la lista de usuarios para verificar que no se registren datos duplicados de usuarios.
+        try {
+            
+            for(Iterator<Usuario> it= listUsuarios.listIterator();it.hasNext();){     
+            Usuario us=it.next();
+                if(us.getUsuario().equals(user)){    //Si el usuario ya existe, se deben ingresar un usuario nuevo
+                    System.out.println("Usuario Registrado ingrese un usuario diferente \n");
+                    registrar();        
+                }else{
+                    System.out.println("Ingrese contraseña");
+                    String pass =sc.nextLine();
+                    Usuario usuario = new Usuario(nombre,user,pass);
+                    listUsuarios.add(usuario);
+                    System.out.println("Usuario Registrado  \n");
+                    login();
+                }
+            }      
+            
+        } catch (java.util.ConcurrentModificationException exception) {
+        // Catch ConcurrentModificationExceptions.
+         
+        } catch (Throwable throwable) {
+            // Catch any other Throwables.
+          
+        }
+        
     }
     
 }
