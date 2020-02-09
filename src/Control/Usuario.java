@@ -6,6 +6,8 @@
 package Control;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  *
@@ -54,6 +56,17 @@ public class Usuario {
 
     public void setListUsuarios(ArrayList<String> listUsuarios) {
         this.listUsuarios = listUsuarios;
+    }
+    
+    public static void login(){
+        
+        System.out.println("Ingresar Usuario");
+        Scanner sc = new Scanner(System.in);
+	String user=sc.nextLine();
+	
+        //Lista de usuarios obtenida de base de datos y buscar us.
+      
+        
     }
     
 }
