@@ -11,4 +11,42 @@ package Control;
  */
 public class Desechos {
     
+    public int vidrio;
+    public int papel;
+    public int organico;
+    public int ordinario;
+
+    public int getVidrio() {
+        return vidrio;
+    }
+
+    public void setVidrio(int vidrio) {
+        this.vidrio = vidrio;
+    }
+
+    public int getPapel() {
+        return papel;
+    }
+
+    public void setPapel(int papel) {
+        this.papel = papel;
+    }
+
+    public int getOrganico() {
+        return organico;
+    }
+
+    public void setOrganico(int organico) {
+        this.organico = organico;
+    }
+
+    public int getOrdinario() {
+        return ordinario;
+    }
+
+    public void setOrdinario(int ordinario) {
+        this.ordinario = ordinario;
+    }
+    
+    
 }

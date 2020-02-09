@@ -13,15 +13,47 @@ import java.util.ArrayList;
  */
 public class Usuario {
     
-    public String nombre;
-    public String usuario;
-    public String passwd;
-    public ArrayList <String> listUsuarios = new ArrayList<>();
+    protected String nombre;
+    protected String usuario;
+    protected String passwd;
+    protected ArrayList <String> listUsuarios = new ArrayList<>();
     
     public Usuario(String nombre,String usuario, String pass){
         this.nombre=nombre;
         this.usuario=usuario;
         this.passwd=pass;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public ArrayList<String> getListUsuarios() {
+        return listUsuarios;
+    }
+
+    public void setListUsuarios(ArrayList<String> listUsuarios) {
+        this.listUsuarios = listUsuarios;
     }
     
 }
