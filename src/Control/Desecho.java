@@ -18,7 +18,7 @@ public class Desecho {
     public int vidrio=0;
     public int papel=0;
     public int organico=0;
-    public int ordinario=0;
+    public int plastico=0;
     protected static ArrayList <Desecho> listDesechos = new ArrayList<>();
 
     public int getVidrio() {
@@ -45,12 +45,12 @@ public class Desecho {
         this.organico = organico;
     }
 
-    public int getOrdinario() {
-        return ordinario;
+    public int getPlastico() {
+        return plastico;
     }
 
-    public void setOrdinario(int ordinario) {
-        this.ordinario = ordinario;
+    public void setPlastico(int plastico) {
+        this.plastico = plastico;
     }
     
     static void showOptions(String User){
