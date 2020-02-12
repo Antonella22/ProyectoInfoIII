@@ -5,6 +5,8 @@
  */
 package Control;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Antonella
@@ -15,4 +17,11 @@ public class Administrador extends Usuario{
         super(nombre, usuario, pass);
     }
     
+    public void GestionUsuarios(ArrayList<Usuario> listUsuarios){
+        
+    }
+    
+    public void estadisticasTotal(ArrayList<Desecho> listDesechos){
+        
+    }
 }

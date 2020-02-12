@@ -19,11 +19,13 @@ public class ProyectoInfoIII {
      */
     public static void main(String[] args) {
         
-           showMenu();
-           
+           showMenuConsole();
+           //showAuthFrame()
     }
     
-    public static void showMenu() {
+    
+    
+    public static void showMenuConsole() {
        
         int exit = 0;
         

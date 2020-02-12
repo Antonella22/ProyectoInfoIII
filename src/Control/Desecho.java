@@ -84,7 +84,7 @@ public class Desecho {
                             //}
                             break;
                     case 3:
-                            ProyectoInfoIII.showMenu();
+                            ProyectoInfoIII.showMenuConsole();
                             break;
                     default:
                             System.out.println();

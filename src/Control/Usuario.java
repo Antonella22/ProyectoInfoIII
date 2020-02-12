@@ -5,6 +5,7 @@
  */
 package Control;
 
+import DAO.UsuarioDAO;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -13,13 +14,13 @@ import java.util.Scanner;
  *
  * @author Antonella
  */
-public class Usuario {
+public class Usuario implements UsuarioDAO {
     
     protected String nombre;
     protected String usuario;
     protected String passwd;
     //public ArrayList <Usuario> listUsuarios = new ArrayList<>();   
-    public static ArrayList <Usuario> listUsuarios;
+    static ArrayList <Usuario> listUs;
     
     public Usuario() {
     }
@@ -54,22 +55,43 @@ public class Usuario {
         this.passwd = passwd;
     }
 
-    public ArrayList<Usuario> getListUsuarios() {
-        return listUsuarios;
+    public static ArrayList<Usuario> listaUsuarios(){
+        Usuario usuario = new Usuario();
+		
+	return usuario.read();	
     }
-
-    public void setListUsuarios(ArrayList<Usuario> listUsuarios) {
-        this.listUsuarios = listUsuarios;
+    
+    public static boolean registrarUsuario(){
+        
+        return true; //usuario.register();
     }
-
+    
+    public static boolean loginAuth(String txtUser,String txtPassword ){
+         
+        listUs =  listaUsuarios();
+        
+        for(Iterator<Usuario> it=listUs.iterator();it.hasNext();){     
+        Usuario us=it.next();
+            if(us.getUsuario().equals(txtUser) && us.getPasswd().equals(txtPassword)){     //verificar si usuario existe en lista
+                    //this.isVisible(false);
+                    //Seleccion.isVisible(true)
+                return true;
+            }else{
+                    //Register.isVisible(true);     
+            }
+        }
+        return true;
+    }
+    
     public static void login(){
         
+        listUs = listaUsuarios();
         System.out.println("Ingresar Usuario");
         Scanner sc = new Scanner(System.in);
 	String user=sc.nextLine();
         
         //Recorrer y buscar usuario en lista para verificar existencia.
-        for(Iterator<Usuario> it= listUsuarios.iterator();it.hasNext();){     
+        for(Iterator<Usuario> it= listUs.iterator();it.hasNext();){     
                 Usuario us=it.next();
                 if(us.getUsuario().equals(user)){     //Si usuario existe en la lista se muestran las siguientes opciones
                     Desecho.showOptions(user);       //tipo de usuario como parametro para mostrar las opciones           
@@ -83,6 +105,8 @@ public class Usuario {
     
     public static void registrar(){
       
+        listUs = listaUsuarios();
+        
         Scanner sc = new Scanner(System.in);       
         System.out.println("Registro de usuarios");
         System.out.println("Ingrese el nombre del usuario");
@@ -93,16 +117,16 @@ public class Usuario {
         //Se recorre la lista de usuarios para verificar que no se registren datos duplicados de usuarios.
         try {
             
-            for(Iterator<Usuario> it= listUsuarios.listIterator();it.hasNext();){     
+            for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
             Usuario us=it.next();
-                if(us.getUsuario().equals(user)){    //Si el usuario ya existe, se deben ingresar un usuario nuevo
+                if(us.getUsuario().equals(user)){    //Si el usuya existe, se deben ingresar un usuario nuevo
                     System.out.println("Usuario Registrado ingrese un usuario diferente \n");
                     registrar();        
                 }else{
                     System.out.println("Ingrese contraseña");
                     String pass =sc.nextLine();
                     Usuario usuario = new Usuario(nombre,user,pass);
-                    listUsuarios.add(usuario);
+                    listUs.add(usuario);
                     System.out.println("Usuario Registrado  \n");
                     login();
                 }
