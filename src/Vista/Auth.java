@@ -10,6 +10,7 @@ import Control.Usuario;
 import static Control.Usuario.registrar;
 import java.util.Iterator;
 import java.util.Set;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,11 +23,23 @@ public class Auth extends javax.swing.JFrame {
     
     public Auth() {
         initComponents();
+        lbluser.setVisible(false); 
+        lblpass.setVisible(false); 
     }
 
     public void limpiarTexto(){
         txtUser.setText("");
         txtUser.setText("");
+    }
+    
+    public void VerificarCampos(){
+       
+        if(txtUser.getText().isEmpty()){
+             lbluser.setVisible(true);         
+        } 
+        if(txtPassword.getText().isEmpty()){
+            lblpass.setVisible(true);                   
+        }       
     }
     
     /**
@@ -45,10 +58,14 @@ public class Auth extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         btnRegistro = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        lbluser = new javax.swing.JLabel();
+        lblpass = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(40000, 40000));
+        setMinimumSize(new java.awt.Dimension(40000, 40000));
         getContentPane().setLayout(null);
 
         lbTitulo.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
@@ -59,17 +76,17 @@ public class Auth extends javax.swing.JFrame {
         jlabel.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
         jlabel.setText("Usuario");
         getContentPane().add(jlabel);
-        jlabel.setBounds(80, 260, 80, 21);
+        jlabel.setBounds(60, 260, 80, 21);
 
         lbPass.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
         lbPass.setText("Contraseña");
         getContentPane().add(lbPass);
-        lbPass.setBounds(80, 300, 79, 21);
+        lbPass.setBounds(60, 300, 79, 21);
 
         txtUser.setFont(new java.awt.Font("Candara", 0, 16)); // NOI18N
-        txtUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserActionPerformed(evt);
+        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUserMouseClicked(evt);
             }
         });
         txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -78,7 +95,7 @@ public class Auth extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUser);
-        txtUser.setBounds(200, 260, 140, 27);
+        txtUser.setBounds(180, 260, 140, 27);
 
         btnLogin.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnLogin.setText("Login");
@@ -92,6 +109,11 @@ public class Auth extends javax.swing.JFrame {
 
         btnRegistro.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnRegistro.setText("Registarse");
+        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegistro);
         btnRegistro.setBounds(350, 400, 95, 27);
 
@@ -99,26 +121,43 @@ public class Auth extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(180, 100, 128, 128);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 40, 480, 470);
-
         txtPassword.setText("jPasswordField1");
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyPressed(evt);
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(20, 10, 130, 30);
+        txtPassword.setBounds(180, 300, 130, 30);
+
+        lbluser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbluser.setForeground(new java.awt.Color(255, 51, 51));
+        lbluser.setText("Ingresar usuario");
+        getContentPane().add(lbluser);
+        lbluser.setBounds(340, 270, 100, 15);
+
+        lblpass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblpass.setForeground(new java.awt.Color(255, 0, 0));
+        lblpass.setText("Ingresar Contraseña");
+        getContentPane().add(lblpass);
+        lblpass.setBounds(330, 305, 130, 20);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 470, 470);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
          // TODO add your handling code here:
@@ -128,24 +167,45 @@ public class Auth extends javax.swing.JFrame {
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
        
-        //lbluser.setVisible(false);
+        //lblpass.setVisible(false);
         pass=txtPassword.getText();
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
-        if(txtUser.getText()==""){
-            //lbluser.setVisible(true);
-        };
-        if(txtPassword.getText()==""){
-            //lbluser.setVisible(true);
-        }
-        
+        VerificarCampos();
+             
         if(Usuario.loginAuth(txtUser.getText(),txtPassword.getText())){
-            
+            this.setVisible(false);
+            new Seleccion().setVisible(true);     
+        }else{
+            JOptionPane.showMessageDialog(this,"Datos incorrectos");
         }
           
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+        lblpass.setVisible(false); 
+        byte cont=0;
+        cont++;
+        if (cont==1){
+            txtPassword.setText("");
+        }         
+    }//GEN-LAST:event_txtPasswordMouseClicked
+
+    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
+        lbluser.setVisible(false); 
+    }//GEN-LAST:event_txtUserMouseClicked
+
+    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+           this.setVisible(false);
+           new Register().setVisible(true);
+    }//GEN-LAST:event_btnRegistroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +250,8 @@ public class Auth extends javax.swing.JFrame {
     private javax.swing.JLabel jlabel;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JLabel lblpass;
+    private javax.swing.JLabel lbluser;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

@@ -21,6 +21,7 @@ public class Usuario implements UsuarioDAO {
     protected String passwd;
     //public ArrayList <Usuario> listUsuarios = new ArrayList<>();   
     static ArrayList <Usuario> listUs;
+    static Usuario us1;
     
     public Usuario() {
     }
@@ -67,20 +68,14 @@ public class Usuario implements UsuarioDAO {
     }
     
     public static boolean loginAuth(String txtUser,String txtPassword ){
-         
-        listUs =  listaUsuarios();
+        
+        listUs=listaUsuarios();
         
         for(Iterator<Usuario> it=listUs.iterator();it.hasNext();){     
         Usuario us=it.next();
-            if(us.getUsuario().equals(txtUser) && us.getPasswd().equals(txtPassword)){     //verificar si usuario existe en lista
-                    //this.isVisible(false);
-                    //Seleccion.isVisible(true)
-                return true;
-            }else{
-                    //Register.isVisible(true);     
-            }
+            return us.getUsuario().equals(txtUser) && us.getPasswd().equals(txtPassword); //verificar si usuario existe en lista
         }
-        return true;
+        return false;
     }
     
     public static void login(){

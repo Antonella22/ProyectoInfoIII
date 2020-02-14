@@ -23,7 +23,7 @@ public interface UsuarioDAO extends IDBConnection {
     default ArrayList<Usuario> read(){
         
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        try(Connection connection = conexionBd()){
+        /*try(Connection connection = conexionBd()){
         
         String query = "SELECT * FROM " + TUSUARIO;
         PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -39,8 +39,15 @@ public interface UsuarioDAO extends IDBConnection {
         }
         }catch(SQLException E){
             
-        }
+        }*/
+        usuarios.add(new Usuario("admin","admin","admin"));
         return usuarios;
+    }
+    
+    default void register(String nombre, String usuario, String contraseña,ArrayList<Usuario> usuarios){
+        //ArrayList<Usuario> usuarios = usuarios;
+        if();
+        usuarios.add(new Usuario(nombre,usuario,contraseña));
     }
     
 }

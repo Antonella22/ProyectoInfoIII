@@ -2,7 +2,7 @@
 Brahian Felipe Hurtado Erazo              												11 oct. 2019     
 Antonella Burbano Narváez  
 
-Introducción:  El manejo de los desechos en los hogares en la gran mayoría se realiza erróneamente, 
+El manejo de los desechos en los hogares en la gran mayoría se realiza erróneamente, 
 teniendo en cuenta las canecas y las bolsas plásticas utilizadas más frecuentes. El desarrollo de 
 Caneca de basura inteligente que ayuda a reciclar se presenta en el documento, cuenta con una puerta 
 o tapa motorizada que se abre o levanta al acercar la mano a los sensores de presencia, luego en la 
