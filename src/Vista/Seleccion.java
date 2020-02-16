@@ -39,6 +39,10 @@ public class Seleccion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(640, 510));
+        setMinimumSize(new java.awt.Dimension(640, 510));
+        setResizable(false);
+        setSize(new java.awt.Dimension(640, 510));
         getContentPane().setLayout(null);
 
         btnPapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papel.png"))); // NOI18N
@@ -84,8 +88,13 @@ public class Seleccion extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(522, 440, 77, 27);
+        btnLogout.setBounds(522, 440, 90, 27);
 
         btnEstadisticas.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnEstadisticas.setText("Estadisticas");
@@ -95,7 +104,7 @@ public class Seleccion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEstadisticas);
-        btnEstadisticas.setBounds(500, 70, 101, 27);
+        btnEstadisticas.setBounds(500, 67, 110, 30);
 
         btnEstadisticasT.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
         btnEstadisticasT.setText("Estadistica Total");
@@ -105,9 +114,12 @@ public class Seleccion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEstadisticasT);
-        btnEstadisticasT.setBounds(490, 110, 115, 31);
+        btnEstadisticasT.setBounds(500, 110, 115, 31);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seleccion.jpg"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(640, 500));
+        jLabel2.setMinimumSize(new java.awt.Dimension(640, 500));
+        jLabel2.setPreferredSize(new java.awt.Dimension(640, 500));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 640, 500);
 
@@ -138,6 +150,10 @@ public class Seleccion extends javax.swing.JFrame {
     private void btnPlasticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlasticoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPlasticoActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments

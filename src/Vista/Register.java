@@ -7,6 +7,7 @@
 package Vista;
 
 import Control.Usuario;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,7 @@ public class Register extends javax.swing.JFrame {
     /** Creates new form Register */
     public Register() {
         initComponents();
+        this.setSize(new Dimension(100,100));
     }
     
     public void limpiarCampos(){
@@ -64,6 +66,10 @@ public class Register extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(550, 370));
+        setMinimumSize(new java.awt.Dimension(550, 370));
+        setResizable(false);
+        setSize(new java.awt.Dimension(550, 370));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
@@ -132,9 +138,12 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistrar);
-        btnRegistrar.setBounds(290, 280, 87, 27);
+        btnRegistrar.setBounds(270, 270, 100, 27);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Register.JPG"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(550, 370));
+        jLabel1.setMinimumSize(new java.awt.Dimension(550, 370));
+        jLabel1.setPreferredSize(new java.awt.Dimension(550, 370));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 550, 370);
 
@@ -159,6 +168,7 @@ public class Register extends javax.swing.JFrame {
             if (reg == 0 ){
                //lblUser.setVisible(true);
                //lblUser.setText(Usuario ya existe);
+                JOptionPane.showMessageDialog(null, "Usuario ya existe");
             }
 
         }

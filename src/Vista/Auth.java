@@ -8,6 +8,7 @@ package Vista;
 import Control.Desecho;
 import Control.Usuario;
 import static Control.Usuario.registrar;
+import java.awt.Dimension;
 import java.util.Iterator;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -65,8 +66,10 @@ public class Auth extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(40000, 40000));
-        setMinimumSize(new java.awt.Dimension(40000, 40000));
+        setMaximumSize(new java.awt.Dimension(459, 469));
+        setMinimumSize(new java.awt.Dimension(459, 469));
+        setResizable(false);
+        setSize(new java.awt.Dimension(459, 469));
         getContentPane().setLayout(null);
 
         lbTitulo.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
@@ -106,7 +109,7 @@ public class Auth extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(210, 360, 67, 27);
+        btnLogin.setBounds(210, 360, 80, 27);
 
         btnRegistro.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnRegistro.setText("Registarse");
@@ -116,7 +119,7 @@ public class Auth extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistro);
-        btnRegistro.setBounds(350, 400, 95, 27);
+        btnRegistro.setBounds(335, 400, 110, 27);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono.png"))); // NOI18N
         getContentPane().add(jLabel5);
@@ -154,8 +157,11 @@ public class Auth extends javax.swing.JFrame {
         lblpass.setBounds(330, 305, 130, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(459, 469));
+        jLabel1.setMinimumSize(new java.awt.Dimension(459, 469));
+        jLabel1.setPreferredSize(new java.awt.Dimension(459, 469));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 470, 470);
+        jLabel1.setBounds(0, 0, 459, 469);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
