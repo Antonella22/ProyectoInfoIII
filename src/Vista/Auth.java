@@ -33,14 +33,14 @@ public class Auth extends javax.swing.JFrame {
     public boolean VerificarCampos(){
        
         if(txtUser.getText().isEmpty()){
-             lbluser.setVisible(true);
-             return true;
-        } 
-        if(txtPassword.getText().isEmpty()){
+            lbluser.setVisible(true);
+            return true;
+        }else if(txtPassword.getText().isEmpty()){       
             lblpass.setVisible(true);
             return true;
-        } 
-        return false;
+        }else{
+            return false;
+        }      
     }
     
     /**
@@ -178,14 +178,21 @@ public class Auth extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
         if(!VerificarCampos()){
-            
-            if(Usuario.loginAuth(txtUser.getText(),txtPassword.getText())){
+        
+            int log = Usuario.loginAuth(txtUser.getText(),txtPassword.getText());
+            if(log==1){
                 limpiarCampos();
                 this.setVisible(false);
                 new Seleccion().setVisible(true);     
-            }else{
-                JOptionPane.showMessageDialog(this,"Datos incorrectos");
-            } 
+            }
+            if(log==2){
+                JOptionPane.showMessageDialog(null,"Usuario no registrado");
+            }
+            if(log==3){
+                lblpass.setText("Contraseña incorrecta");
+                lblpass.setVisible(true);
+            }
+                    
         }  
     }//GEN-LAST:event_btnLoginActionPerformed
 

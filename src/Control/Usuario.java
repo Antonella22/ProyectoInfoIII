@@ -20,7 +20,7 @@ public class Usuario implements UsuarioDAO {
     protected String usuario;
     protected String passwd;   
     static ArrayList <Usuario> listUs;
-    static Usuario us1;
+    static ArrayList <Usuario> listAux = new ArrayList<>();
     
     public Usuario() {
     }
@@ -55,50 +55,68 @@ public class Usuario implements UsuarioDAO {
         this.passwd = passwd;
     }
 
+    public static ArrayList<Usuario> getListUs() {
+        return listUs;
+    }
+
+    public static void setListUs(ArrayList<Usuario> listUs) {
+        Usuario.listUs = listUs;
+    }
+
     public static ArrayList<Usuario> listaUsuarios(){
         Usuario usuario = new Usuario();
-		
-	return usuario.read();	
+	return usuario.readDates();
     }
     
-    public static boolean registrar(String nombre,String txtUser,String txtPassword){
-        Usuario usuario = new Usuario();
-        
-        return usuario.register(nombre, txtUser, txtPassword);
+    public static void registrar(String nombre,String txtUser,String txtPassword){
+        Usuario usuario = new Usuario(nombre, txtUser, txtPassword);
+        listAux.add(usuario);
+        usuario.register(usuario);
     }
     
-    public static int registrarUsuario(String nombre,String txtUser,String txtPassword){
+    public static  byte registrarUsuario(String nombre,String txtUser,String txtPassword){
         
         listUs=listaUsuarios();
+        listAux.add(new Usuario("a","a","a"));
+        listUs.addAll(listAux);
+        byte b=0;
+        
         for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
             Usuario us=it.next();
                 if(us.getUsuario().equals(txtUser)){ 
-                    return 1; 
-                }else{
-                    if(registrar(nombre,txtUser,txtPassword)){
-                       return  2;
-                    }else{
-                        return 3;
-                    }
+                    b=0; 
+                }
+                else {
+                    registrar(nombre,txtUser,txtPassword);
+                    b=1;    
                 }
         }
-        return 0;
+        return b;
     }
     
-    public static boolean loginAuth(String txtUser,String txtPassword ){
-        
+    public static int loginAuth(String txtUser,String txtPassword ){
+         
         listUs=listaUsuarios();
-        
+        listUs.addAll(listAux);
+        int b=0;
         for(Iterator<Usuario> it=listUs.iterator();it.hasNext();){     
         Usuario us=it.next();
-            return us.getUsuario().equals(txtUser) && us.getPasswd().equals(txtPassword); //verificar si usuario existe en lista
+            if(us.getUsuario().equals(txtUser)){
+                if(us.getPasswd().equals(txtPassword)){
+                    b=1;
+                }else{
+                    b=3;
+                }
+            }else{
+                b=2;
+            }
         }
-        return false;
+        return b;
     }
     
     public static void login(){
         
-        listUs = listaUsuarios();
+        listaUsuarios();
         System.out.println("Ingresar Usuario");
         Scanner sc = new Scanner(System.in);
 	String user=sc.nextLine();
@@ -118,7 +136,7 @@ public class Usuario implements UsuarioDAO {
     
     public static void registrar(){
       
-        listUs = listaUsuarios();
+        listaUsuarios();
         
         Scanner sc = new Scanner(System.in);       
         System.out.println("Registro de usuarios");

@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import BaseDatos.DataBase;
 import static BaseDatos.DataBase.*;
 import BaseDatos.IDBConnection;
 import Control.Usuario;
@@ -12,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -20,11 +22,10 @@ import java.util.ArrayList;
  */
 public interface UsuarioDAO extends IDBConnection {
     
-    ArrayList<Usuario> usuarios = new ArrayList<>();
     
-    default ArrayList<Usuario> read(){
+    default ArrayList<Usuario> readDates(){
         
-        //ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Usuario> usuarios = new ArrayList<>();
         /*try(Connection connection = conexionBd()){
         
         String query = "SELECT * FROM " + TUSUARIO;
@@ -45,14 +46,24 @@ public interface UsuarioDAO extends IDBConnection {
         usuarios.add(new Usuario("admin","admin","admin"));
         return usuarios;
     }
-    
-    default boolean register(String nombre, String usuario, String contraseña){
-              
-        //ArrayList<Usuario> usuarios = new ArrayList<>();
-        //usuarios; //= read();
-        
-        usuarios.add(new Usuario(nombre,usuario,contraseña));
-        return true;
-    }
-    
+     
+    default byte register(Usuario usuario){
+        byte b=0;
+        /*try(Connection connection = conexionBd()){
+          Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd
+          String query = "INSERT INTO " + TUSUARIO +
+                                            "("+TUSUARIO_NOMBRE+","+TUSUARIO_USUARIO+","+TCONT_CONT+")"+
+                                            "VALUES("+usuario.getNombre()+", "+usuario.getUsuario()+", "+usuario.getPasswd()+")";
+        if(statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
+           b=1;
+	}else{
+           b=0;
+        }
+			
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }*/
+        b=1;
+        return b;
+    }   
 }

@@ -147,24 +147,21 @@ public class Register extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
-    if(!VerificarCampos()){
-        
-        if(Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()) == 1 ){
-           //lblUser.setVisible(true);
-           //lblUser.setText(Usuario Registrado);
+        if(!VerificarCampos()){
+
+            byte reg = (Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()));
+
+            if(reg == 1 ){
+                JOptionPane.showMessageDialog(null, "Usuario Registrado");
+                this.setVisible(false);
+                new Auth().setVisible(true);
+            }
+            if (reg == 0 ){
+               //lblUser.setVisible(true);
+               //lblUser.setText(Usuario ya existe);
+            }
+
         }
-        if (Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()) == 2 ){
-            JOptionPane.showMessageDialog(null, "Usuario Registrado");
-            this.setVisible(false);
-            new Auth().setVisible(true);
-            
-        }
-        
-        if(Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()) == 3 ){
-            JOptionPane.showMessageDialog(null, "No se pudo completar el registro...");
-        }
-        
-    }
         
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -175,11 +172,6 @@ public class Register extends javax.swing.JFrame {
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         
         //lblpass.setVisible(false); 
-        byte cont=0;
-        cont++;
-        if (cont==1){
-            txtPass.setText("");
-        }   
     }//GEN-LAST:event_txtPassKeyPressed
 
     private void txtPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseClicked

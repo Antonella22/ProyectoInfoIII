@@ -19,8 +19,9 @@ public class ProyectoInfoIII {
      */
     public static void main(String[] args) {
         
-           showMenuConsole();
-           //showAuthFrame()
+           //showMenuConsole();
+           //Iniciar Jframe pppal
+           new Auth().setVisible(true);
     }
     
     

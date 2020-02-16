@@ -5,6 +5,8 @@
  */
 package BaseDatos;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author BrnH
@@ -31,6 +33,6 @@ public class DataBase {
     public static final String TDESECHO_PAPEL 	= "pape";
     public static final String TDESECHO_PLASTICO= "plastico";
     public static final String TDESECHO_ORGANICO= "organico";
+
     
-   
 }
