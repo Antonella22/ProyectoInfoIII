@@ -18,8 +18,6 @@ import javax.swing.JOptionPane;
  */
 public class Auth extends javax.swing.JFrame {
 
-    String user;
-    String pass;
     
     public Auth() {
         initComponents();
@@ -27,19 +25,22 @@ public class Auth extends javax.swing.JFrame {
         lblpass.setVisible(false); 
     }
 
-    public void limpiarTexto(){
+    public void limpiarCampos(){
         txtUser.setText("");
-        txtUser.setText("");
+        txtPassword.setText("");
     }
     
-    public void VerificarCampos(){
+    public boolean VerificarCampos(){
        
         if(txtUser.getText().isEmpty()){
-             lbluser.setVisible(true);         
+             lbluser.setVisible(true);
+             return true;
         } 
         if(txtPassword.getText().isEmpty()){
-            lblpass.setVisible(true);                   
-        }       
+            lblpass.setVisible(true);
+            return true;
+        } 
+        return false;
     }
     
     /**
@@ -160,28 +161,32 @@ public class Auth extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
-         // TODO add your handling code here:
+
         //lbluser.setVisible(false)
-         user = txtUser.getText();
     }//GEN-LAST:event_txtUserKeyPressed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
        
-        //lblpass.setVisible(false);
-        pass=txtPassword.getText();
+        //lblpass.setVisible(false); 
+        /*byte cont=0;
+        cont++;
+        if (cont==1){
+            txtPassword.setText("");
+        }  */  
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
-        VerificarCampos();
-             
-        if(Usuario.loginAuth(txtUser.getText(),txtPassword.getText())){
-            this.setVisible(false);
-            new Seleccion().setVisible(true);     
-        }else{
-            JOptionPane.showMessageDialog(this,"Datos incorrectos");
-        }
-          
+        if(!VerificarCampos()){
+            
+            if(Usuario.loginAuth(txtUser.getText(),txtPassword.getText())){
+                limpiarCampos();
+                this.setVisible(false);
+                new Seleccion().setVisible(true);     
+            }else{
+                JOptionPane.showMessageDialog(this,"Datos incorrectos");
+            } 
+        }  
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed

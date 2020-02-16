@@ -6,6 +6,9 @@
 
 package Vista;
 
+import Control.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Antonella
@@ -16,15 +19,29 @@ public class Register extends javax.swing.JFrame {
     public Register() {
         initComponents();
     }
+    
+    public void limpiarCampos(){
+        txtNombre.setText("");
+        txtUser.setText("");
+        txtPass.setText("");
+    }
 
-    public void VerificarCampos(){
+      public boolean VerificarCampos(){
        
         if(txtUser.getText().isEmpty()){
-             //lbluser.setVisible(true);         
+            // lblnombre.setVisible(true);  
+            return true;
         } 
-        //if(txtPassword.getText().isEmpty()){
-          //  lblpass.setVisible(true);                   
-        //}       
+        if(txtUser.getText().isEmpty()){
+           //  lbluser.setVisible(true);
+           return true;
+        } 
+        if(txtPass.getText().isEmpty()){
+           // lblpass.setVisible(true);
+           return true;
+        } 
+        
+        return false;
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -85,9 +102,19 @@ public class Register extends javax.swing.JFrame {
 
         txtPass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtPass.setText("jPasswordField2");
+        txtPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPassMouseClicked(evt);
+            }
+        });
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
             }
         });
         getContentPane().add(txtPass);
@@ -119,12 +146,51 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+        
+    if(!VerificarCampos()){
+        
+        if(Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()) == 1 ){
+           //lblUser.setVisible(true);
+           //lblUser.setText(Usuario Registrado);
+        }
+        if (Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()) == 2 ){
+            JOptionPane.showMessageDialog(null, "Usuario Registrado");
+            this.setVisible(false);
+            new Auth().setVisible(true);
+            
+        }
+        
+        if(Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()) == 3 ){
+            JOptionPane.showMessageDialog(null, "No se pudo completar el registro...");
+        }
+        
+    }
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        
+        //lblpass.setVisible(false); 
+        byte cont=0;
+        cont++;
+        if (cont==1){
+            txtPass.setText("");
+        }   
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassMouseClicked
+        
+        //lblpass.setVisible(false); 
+        byte cont=0;
+        cont++;
+        if (cont==1){
+            txtPass.setText("");
+        }   
+    }//GEN-LAST:event_txtPassMouseClicked
 
     /**
      * @param args the command line arguments

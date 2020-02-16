@@ -18,8 +18,7 @@ public class Usuario implements UsuarioDAO {
     
     protected String nombre;
     protected String usuario;
-    protected String passwd;
-    //public ArrayList <Usuario> listUsuarios = new ArrayList<>();   
+    protected String passwd;   
     static ArrayList <Usuario> listUs;
     static Usuario us1;
     
@@ -62,9 +61,28 @@ public class Usuario implements UsuarioDAO {
 	return usuario.read();	
     }
     
-    public static boolean registrarUsuario(){
+    public static boolean registrar(String nombre,String txtUser,String txtPassword){
+        Usuario usuario = new Usuario();
         
-        return true; //usuario.register();
+        return usuario.register(nombre, txtUser, txtPassword);
+    }
+    
+    public static int registrarUsuario(String nombre,String txtUser,String txtPassword){
+        
+        listUs=listaUsuarios();
+        for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
+            Usuario us=it.next();
+                if(us.getUsuario().equals(txtUser)){ 
+                    return 1; 
+                }else{
+                    if(registrar(nombre,txtUser,txtPassword)){
+                       return  2;
+                    }else{
+                        return 3;
+                    }
+                }
+        }
+        return 0;
     }
     
     public static boolean loginAuth(String txtUser,String txtPassword ){

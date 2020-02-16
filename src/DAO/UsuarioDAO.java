@@ -20,9 +20,11 @@ import java.util.ArrayList;
  */
 public interface UsuarioDAO extends IDBConnection {
     
+    ArrayList<Usuario> usuarios = new ArrayList<>();
+    
     default ArrayList<Usuario> read(){
         
-        ArrayList<Usuario> usuarios = new ArrayList<>();
+        //ArrayList<Usuario> usuarios = new ArrayList<>();
         /*try(Connection connection = conexionBd()){
         
         String query = "SELECT * FROM " + TUSUARIO;
@@ -44,10 +46,13 @@ public interface UsuarioDAO extends IDBConnection {
         return usuarios;
     }
     
-    default void register(String nombre, String usuario, String contraseña,ArrayList<Usuario> usuarios){
-        //ArrayList<Usuario> usuarios = usuarios;
-        if();
+    default boolean register(String nombre, String usuario, String contraseña){
+              
+        //ArrayList<Usuario> usuarios = new ArrayList<>();
+        //usuarios; //= read();
+        
         usuarios.add(new Usuario(nombre,usuario,contraseña));
+        return true;
     }
     
 }
