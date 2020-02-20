@@ -15,16 +15,16 @@ public class DataBase {
     
     //Datos generales conexion a  BD
     public static final String URL 		= "jdbc:mysql://localhost:3306/";
-    public static final String DB 		= "IT?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    public static final String USER             = "telematica";
-    public static final String PASSWORD         = "telematica";
+    public static final String DB 		= "datainfo";//?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    public static final String USER             = "root";
+    public static final String PASSWORD         = "toor";
 
     //Tabla Usuario
     public static final String TUSUARIO		= "usuario";
-    public static final String TUSUARIO_ID	= "id";
+    public static final String TUSUARIO_ID	= "idusuario";
     public static final String TUSUARIO_NOMBRE 	= "nombre";
     public static final String TUSUARIO_USUARIO	= "usuario";
-    public static final String TCONT_CONT        = "contraseña";
+    public static final String TCONT_CONT       = "contraseña";
     
     //Tabla desecho
     public static final String TDESECHO 	= "desecho";

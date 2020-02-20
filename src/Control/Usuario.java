@@ -19,8 +19,7 @@ public class Usuario implements UsuarioDAO {
     protected String nombre;
     protected String usuario;
     protected String passwd;   
-    static ArrayList <Usuario> listUs;
-    static ArrayList <Usuario> listAux = new ArrayList<>();
+    static ArrayList <Usuario> listUs = listaUsuarios();
     
     public Usuario() {
     }
@@ -68,27 +67,22 @@ public class Usuario implements UsuarioDAO {
 	return usuario.readDates();
     }
     
-    public static void registrar(String nombre,String txtUser,String txtPassword){
+    public static byte registrar(String nombre,String txtUser,String txtPassword){
         Usuario usuario = new Usuario(nombre, txtUser, txtPassword);
-        listAux.add(usuario);
-        usuario.register(usuario);
+        return usuario.register(usuario);
     }
     
     public static  byte registrarUsuario(String nombre,String txtUser,String txtPassword){
         
-        listUs=listaUsuarios();
-        listAux.add(new Usuario("a","a","a"));
-        listUs.addAll(listAux);
-        byte b=0;
+        byte b=3;
         
         for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
             Usuario us=it.next();
-                if(us.getUsuario().equals(txtUser)){ 
-                    b=0; 
+                if((us.getUsuario().equals(txtUser))){ 
+                       b=0; 
                 }
-                else {
-                    registrar(nombre,txtUser,txtPassword);
-                    b=1;    
+                else {          
+                       b = registrar(nombre,txtUser,txtPassword);
                 }
         }
         return b;
@@ -96,8 +90,6 @@ public class Usuario implements UsuarioDAO {
     
     public static int loginAuth(String txtUser,String txtPassword ){
          
-        listUs=listaUsuarios();
-        listUs.addAll(listAux);
         int b=0;
         for(Iterator<Usuario> it=listUs.iterator();it.hasNext();){     
         Usuario us=it.next();

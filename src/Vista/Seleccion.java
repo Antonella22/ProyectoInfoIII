@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Antonella
@@ -127,8 +129,11 @@ public class Seleccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPapelActionPerformed
-        // TODO add your handling code here:7
-        System.out.println("PAPEL");
+       
+        int id=1;
+        //Usuario.Seleccion(id);
+        JOptionPane.showMessageDialog(this,"");
+        //System.out.println("PAPEL");
     }//GEN-LAST:event_btnPapelActionPerformed
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed

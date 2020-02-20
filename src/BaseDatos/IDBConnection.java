@@ -21,7 +21,7 @@ public interface IDBConnection {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");      //Llamar al diver seleccionado llamado como paquete
+            Class.forName("com.mysql.jdbc.Driver").newInstance();                          //Llamar al diver seleccionado llamado como paquete
             connection = DriverManager.getConnection(URL+DB,USER,PASSWORD);     //Clase Driver Manager xra obtener conexion a Bd, con la direccion de Bd, puertos mySql 3306
             
             if(connection!=null){
@@ -30,6 +30,7 @@ public interface IDBConnection {
             
         } catch (Exception e) {
             e.printStackTrace();
+            System.err.println("Err, no se ha podido cargar MySQL JDBC Driver");
         }finally{
             return connection;
         }

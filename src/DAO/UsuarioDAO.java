@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -26,9 +27,9 @@ public interface UsuarioDAO extends IDBConnection {
     default ArrayList<Usuario> readDates(){
         
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        /*try(Connection connection = conexionBd()){
+        try(Connection connection = conexionBd()){
         
-        String query = "SELECT * FROM " + TUSUARIO;
+        String query = "SELECT * FROM "+DB+".usuario;";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
            
@@ -42,28 +43,35 @@ public interface UsuarioDAO extends IDBConnection {
         }
         }catch(SQLException E){
             
-        }*/
-        usuarios.add(new Usuario("admin","admin","admin"));
+        }
+            //rs.close();
+            //preparedStatement.close();
+            //connection.close();
+        for(Iterator<Usuario> it= usuarios.listIterator();it.hasNext();){
+                    Usuario us=it.next();
+                    System.out.println(""+us.getNombre());
+        } 
         return usuarios;
     }
      
     default byte register(Usuario usuario){
         byte b=0;
-        /*try(Connection connection = conexionBd()){
-          Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd
-          String query = "INSERT INTO " + TUSUARIO +
-                                            "("+TUSUARIO_NOMBRE+","+TUSUARIO_USUARIO+","+TCONT_CONT+")"+
-                                            "VALUES("+usuario.getNombre()+", "+usuario.getUsuario()+", "+usuario.getPasswd()+")";
-        if(statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
-           b=1;
-	}else{
-           b=0;
-        }
+        try(Connection connection = conexionBd()){
+          Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd       
+          String query = "INSERT INTO " + TUSUARIO + " ("+TUSUARIO_ID+","+TUSUARIO_NOMBRE+","+TUSUARIO_USUARIO+","+TCONT_CONT+")"
+                                    +"VALUES ('"+7+"','"+usuario.getNombre()+"','"+usuario.getUsuario()+"','"+usuario.getPasswd()+"');";
+           System.out.println(query);
+           
+           if(statement.execute(query)){//statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
+               b=1;
+            }else{
+               b=0;
+            }
 			
         } catch (SQLException e) {
                 e.printStackTrace();
-        }*/
-        b=1;
+        }
+        //b=1;
         return b;
     }   
 }

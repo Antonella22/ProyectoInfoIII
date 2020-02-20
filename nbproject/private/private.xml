@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/DAO/UsuarioDAO.java</file>
             <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/BaseDatos/IDBConnection.java</file>
+            <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/BaseDatos/DataBase.java</file>
             <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/Vista/Register.java</file>
+            <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/Vista/Auth.java</file>
             <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/Control/Usuario.java</file>
             <file>file:/D:/BRN/TM/GIT/ProyectoInfoIII/ProyectoInfoIII/src/Vista/Seleccion.java</file>
         </group>
