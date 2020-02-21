@@ -26,8 +26,9 @@ import java.util.Iterator;
  */
 public interface DesechoDAO extends IDBConnection{
     
-    default ArrayList<Integer> readDates(){
+    default ArrayList<Desecho> readDates(){
         
+        ArrayList<Desecho> desechos= new ArrayList<>();
         try(Connection connection = conexionBd()){
         
         String query = "SELECT * FROM "+DB+".desecho;";
@@ -48,11 +49,11 @@ public interface DesechoDAO extends IDBConnection{
             //rs.close();
             //preparedStatement.close();
             //connection.close();
-        for(Iterator<Usuario> it= usuarios.listIterator();it.hasNext();){
-                    Usuario us=it.next();
-                    System.out.println(""+us.getNombre());
+        for(Iterator<Desecho> it= desechos.listIterator();it.hasNext();){
+                    Desecho d=it.next();
+                    System.out.println(""+d.getCantidad());
         } 
-        return usuarios;
+        return desechos;
     }
      
     

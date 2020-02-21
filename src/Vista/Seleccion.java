@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -130,10 +131,15 @@ public class Seleccion extends javax.swing.JFrame {
 
     private void btnPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPapelActionPerformed
        
+        Tipo.setSel(0);
+        this.setVisible(false);
+         new Tipo().setVisible(true);
+
         int id=1;
         //Usuario.Seleccion(id);
         JOptionPane.showMessageDialog(this,"");
         //System.out.println("PAPEL");
+
     }//GEN-LAST:event_btnPapelActionPerformed
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
@@ -145,19 +151,25 @@ public class Seleccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstadisticasTActionPerformed
 
     private void btnVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVidrioActionPerformed
-        // TODO add your handling code here:
+        Tipo.setSel(1);
+        this.setVisible(false);
+        new Tipo().setVisible(true);
     }//GEN-LAST:event_btnVidrioActionPerformed
 
     private void btnOrganicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrganicoActionPerformed
-        // TODO add your handling code here:
+        Tipo.setSel(2);
+        this.setVisible(false);
+        new Tipo().setVisible(true);
     }//GEN-LAST:event_btnOrganicoActionPerformed
 
     private void btnPlasticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlasticoActionPerformed
-        // TODO add your handling code here:
+        Tipo.setSel(3);
+        this.setVisible(false);
+        new Tipo().setVisible(true);
     }//GEN-LAST:event_btnPlasticoActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        
+        this.setVisible(false);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**

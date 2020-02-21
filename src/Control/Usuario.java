@@ -113,7 +113,7 @@ public class Usuario implements UsuarioDAO {
         for(Iterator<Usuario> it= listUs.iterator();it.hasNext();){     
                 Usuario us=it.next();
                 if(us.getUsuario().equals(user)){     //Si usuario existe en la lista se muestran las siguientes opciones
-                    Desecho.showOptions(user);       //tipo de usuario como parametro para mostrar las opciones           
+                    //Desecho.showOptions(user);       //tipo de usuario como parametro para mostrar las opciones           
                 }else{
                     System.out.println("Usuario no Registrado, Registrarse primero \n");
                     registrar();     
