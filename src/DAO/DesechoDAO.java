@@ -26,7 +26,7 @@ import java.util.Iterator;
  */
 public interface DesechoDAO extends IDBConnection{
     
-    default ArrayList<Integer> readDates(){
+   /* default ArrayList<Integer> readDates(){
         
         try(Connection connection = conexionBd()){
         
@@ -36,11 +36,11 @@ public interface DesechoDAO extends IDBConnection{
            
         //ResultSet ayuda a iterar los datos del statemetn par aorganizarlos en objetos
         while(rs.next()){
-            /*Integer cantidad = new Integer(
+            Integer cantidad = new Integer(
                     rs.getString(TDESECHO_VIDRIO),
                     rs.getString(TDESECHO_PAPEL),
                     rs.getString(TDESECHO_PLASTICO));
-            usuarios.add(usuario);*/
+            usuarios.add(usuario);
         }
         }catch(SQLException E){
             
@@ -48,12 +48,8 @@ public interface DesechoDAO extends IDBConnection{
             //rs.close();
             //preparedStatement.close();
             //connection.close();
-        for(Iterator<Usuario> it= usuarios.listIterator();it.hasNext();){
-                    Usuario us=it.next();
-                    System.out.println(""+us.getNombre());
-        } 
         return usuarios;
-    }
+    }*/
      
     
 }

@@ -19,7 +19,6 @@ public class Register extends javax.swing.JFrame {
     /** Creates new form Register */
     public Register() {
         initComponents();
-        this.setSize(new Dimension(100,100));
     }
     
     public void limpiarCampos(){
@@ -161,14 +160,14 @@ public class Register extends javax.swing.JFrame {
             byte reg = (Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()));
 
             if(reg == 0 ){
+                //lblUser.setVisible(true);
+                //lblUser.setText(Usuario ya existe);
+                JOptionPane.showMessageDialog(null, "Usuario ya existe");
+            }
+            if (reg == 1 ){              
                 JOptionPane.showMessageDialog(null, "Usuario Registrado exitosamente");
                 this.setVisible(false);
                 new Auth().setVisible(true);
-            }
-            if (reg == 1 ){
-               //lblUser.setVisible(true);
-               //lblUser.setText(Usuario ya existe);
-                JOptionPane.showMessageDialog(null, "Usuario ya existe");
             }
 
         }

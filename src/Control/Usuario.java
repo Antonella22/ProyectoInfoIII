@@ -19,7 +19,7 @@ public class Usuario implements UsuarioDAO {
     protected String nombre;
     protected String usuario;
     protected String passwd;   
-    static ArrayList <Usuario> listUs = listaUsuarios();
+    static ArrayList <Usuario> listUs ;//= listaUsuarios();
     
     public Usuario() {
     }
@@ -74,31 +74,36 @@ public class Usuario implements UsuarioDAO {
     
     public static  byte registrarUsuario(String nombre,String txtUser,String txtPassword){
         
-        byte b=3;
+        Usuario usuario = new Usuario();
+        byte b=0;
         
-        for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
-            Usuario us=it.next();
-                if((us.getUsuario().equals(txtUser))){ 
-                       b=1; 
-                }
-                else {          
-                       b = registrar(nombre,txtUser,txtPassword);
-                }
+        if(usuario.verificarUsuario(txtUser)){ 
+            b=0;
         }
+        else {          
+             b=registrar(nombre,txtUser,txtPassword);      
+        }
+        
         return b;
     }
     
     public static int loginAuth(String txtUser,String txtPassword ){
          
+        Usuario usuario = new Usuario();
+
         int b=0;
-        for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
-            Usuario us=it.next();
-            if(us.getUsuario().equals(txtUser)&& us.getPasswd().equals(txtPassword)){
-                    b=1;
+        
+            if(usuario.verificarUsuario(txtUser)){
+                    if(usuario.verificarLogin(txtUser, txtPassword)){
+                        b=1;  
+                    }else{
+                        b=3;
+                    }
+      
             }else{
                 b=2;
             }
-        }
+
         return b;
     }
     

@@ -27,9 +27,12 @@ public interface UsuarioDAO extends IDBConnection {
     default ArrayList<Usuario> readDates(){
         
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        
         try(Connection connection = conexionBd()){
         
         String query = "SELECT * FROM "+DB+".usuario;";
+        System.out.println(query);
+        
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
            
@@ -54,16 +57,87 @@ public interface UsuarioDAO extends IDBConnection {
         return usuarios;
     }
      
+      default boolean verificarUsuario(String usuario){
+          
+        boolean b=false;
+        
+        try(Connection connection = conexionBd()){
+            //SELECT usuario FROM datainfo.usuario where usuario="HH";
+            String query = "SELECT "+TUSUARIO_USUARIO+" FROM "+DB+".usuario where "+TUSUARIO_USUARIO+"='"+usuario+"';";
+            System.out.println(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
+
+            //ResultSet ayuda a iterar los datos del statemetn par aorganizarlos en objetos
+            while(rs.next()){
+                String us= new String(rs.getString(TUSUARIO_USUARIO));
+                System.out.println(""+us);
+
+                if(us==""){
+                    b=false;
+                }else{
+                    b=true;
+                }
+
+                rs.close();
+                preparedStatement.close();
+                connection.close();
+            }
+           
+        }catch(SQLException E){
+            
+        }
+        return b;
+    }
+      
+     default boolean verificarLogin(String usuario, String contraseña){
+            
+        boolean b = false;
+        
+        try(Connection connection = conexionBd()){
+        // SELECT usuario, contraseña FROM datainfo.usuario where usuario="anto"; 
+        String query = "SELECT "+TUSUARIO_USUARIO+","+TCONT_CONT+""+" FROM "+DB+"."+TUSUARIO_USUARIO+" where "+TUSUARIO_USUARIO+"='"+usuario+"';";
+        System.out.println(query);
+        
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
+           
+            //ResultSet ayuda a iterar los datos del statemetn par aorganizarlos en objetos
+            while(rs.next()){
+                String us= new String(rs.getString(TUSUARIO_USUARIO));
+                String cont= new String(rs.getString(TCONT_CONT));
+ 
+                System.out.println(""+us + "" +cont);
+
+                if(us.equals(usuario)){ 
+                    if(cont.equals(contraseña)){
+                        b=true;
+                    }else{
+                        b=false;
+                    }
+                }
+                rs.close();
+                preparedStatement.close();
+                connection.close();
+            }
+       
+        }catch(SQLException E){
+            
+        }
+        
+        return b;
+    }
+     
     default byte register(Usuario usuario){
         byte b=0;
         try(Connection connection = conexionBd()){
           Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd       
           String query = "INSERT INTO " + TUSUARIO + " ("+TUSUARIO_ID+","+TUSUARIO_NOMBRE+","+TUSUARIO_USUARIO+","+TCONT_CONT+")"
-                                    +"VALUES ('NULL','"+usuario.getNombre()+"','"+usuario.getUsuario()+"','"+usuario.getPasswd()+"');";
+                                    +"VALUES (NULL,'"+usuario.getNombre()+"','"+usuario.getUsuario()+"','"+usuario.getPasswd()+"');";
            System.out.println(query);
            
            if(statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
-               b=0;
+               b=1;
            }
             statement.close();
             connection.close();
@@ -71,7 +145,6 @@ public interface UsuarioDAO extends IDBConnection {
         } catch (SQLException e) {
                 e.printStackTrace();
         }
-        //b=1;
         return b;
     }   
 }
