@@ -5,9 +5,6 @@
  */
 package Control;
 
-import Vista.ProyectoInfoIII;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -15,131 +12,33 @@ import java.util.Scanner;
  */
 public class Desecho {
 
-    public int vidrio=0;
-    public int papel=0;
-    public int organico=0;
-    public int plastico=0;
-    protected static ArrayList <Desecho> listDesechos = new ArrayList<>();
+    protected int id_desecho;
+    protected int cantidad;
 
-    public int getVidrio() {
-        return vidrio;
+    public Desecho() {
     }
 
-    public void setVidrio(int vidrio) {
-        this.vidrio = vidrio;
+    public Desecho(int id_desecho, int cantidad) {
+        this.id_desecho = id_desecho;
+        this.cantidad = cantidad;
     }
 
-    public int getPapel() {
-        return papel;
+    
+    public int getId_desecho() {
+        return id_desecho;
     }
 
-    public void setPapel(int papel) {
-        this.papel = papel;
+    public void setId_desecho(int id_desecho) {
+        this.id_desecho = id_desecho;
     }
 
-    public int getOrganico() {
-        return organico;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setOrganico(int organico) {
-        this.organico = organico;
-    }
-
-    public int getPlastico() {
-        return plastico;
-    }
-
-    public void setPlastico(int plastico) {
-        this.plastico = plastico;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
-    static void showOptions(String User){
-        
-        int exit = 0;
-        
-        do {
-        System.out.println("");
-        System.out.println("1. Seleccionar Desecho");
-        System.out.println("2. Ver estadisticas");
-        System.out.println("3. Logout");
-        System.out.println("0. Exit");
-        
-        Scanner sc = new Scanner(System.in);
-        int response=sc.nextInt();
-
-            switch (response) {
-                    case 0:
-                            //salir
-                            exit = 0;
-                            break;
-                    case 1:
-                            Desecho.seleccion();
-                            break;
-
-                    case 2:
-                            //if(user==admin){
-                            //Desecho.estadisticas();
-                            //}else{
-                            ////Desecho.estadisticasTotal();
-                            //}
-                            break;
-                    case 3:
-                            ProyectoInfoIII.showMenuConsole();
-                            break;
-                    default:
-                            System.out.println();
-                            System.out.println("....¡¡Seleccionar una opción!!....");
-                            System.out.println();
-                            break;
-            }
-
-        
-        }while(exit != 0);
-       
-    }
-    
-    static void seleccion() {
-        
-        int exit = 0;     
-
-        do {
-             System.out.println(":::");
-             System.out.println("1. Vidrio");
-             System.out.println("2. Papel");
-             System.out.println("3. Organico");
-             System.out.println("4. Ordinario");
-             System.out.println("0. exit");
-
-            Scanner sc = new Scanner(System.in);
-            int response=sc.nextInt();
-
-                 switch (response) {
-                    case 0:
-                            //salir
-                            exit = 0;
-                            break;
-                    case 1:
-                            //vidrio++;                 //Incrementar cantidad de vidrio
-                            break;
-
-                    case 2:
-                          
-                            break;
-                     case 3:
-                          
-                            break;
-                     case 4:
-                          
-                            break;
-                    default:
-                            System.out.println();
-                            System.out.println("....¡¡Seleccionar una opción!!....");
-                            System.out.println();
-                            break;
-                  }
-        }while(exit!=0);
-      
-         
-    }
     
 }
