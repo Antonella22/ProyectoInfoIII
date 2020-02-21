@@ -79,7 +79,7 @@ public class Usuario implements UsuarioDAO {
         for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
             Usuario us=it.next();
                 if((us.getUsuario().equals(txtUser))){ 
-                       b=0; 
+                       b=1; 
                 }
                 else {          
                        b = registrar(nombre,txtUser,txtPassword);
@@ -91,14 +91,10 @@ public class Usuario implements UsuarioDAO {
     public static int loginAuth(String txtUser,String txtPassword ){
          
         int b=0;
-        for(Iterator<Usuario> it=listUs.iterator();it.hasNext();){     
-        Usuario us=it.next();
-            if(us.getUsuario().equals(txtUser)){
-                if(us.getPasswd().equals(txtPassword)){
+        for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
+            Usuario us=it.next();
+            if(us.getUsuario().equals(txtUser)&& us.getPasswd().equals(txtPassword)){
                     b=1;
-                }else{
-                    b=3;
-                }
             }else{
                 b=2;
             }

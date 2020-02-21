@@ -160,12 +160,12 @@ public class Register extends javax.swing.JFrame {
 
             byte reg = (Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()));
 
-            if(reg == 1 ){
-                JOptionPane.showMessageDialog(null, "Usuario Registrado");
+            if(reg == 0 ){
+                JOptionPane.showMessageDialog(null, "Usuario Registrado exitosamente");
                 this.setVisible(false);
                 new Auth().setVisible(true);
             }
-            if (reg == 0 ){
+            if (reg == 1 ){
                //lblUser.setVisible(true);
                //lblUser.setText(Usuario ya existe);
                 JOptionPane.showMessageDialog(null, "Usuario ya existe");

@@ -40,13 +40,13 @@ public interface UsuarioDAO extends IDBConnection {
                     rs.getString(TUSUARIO_USUARIO),
                     rs.getString(TCONT_CONT));
             usuarios.add(usuario);
+            rs.close();
+            preparedStatement.close();
+            connection.close();
         }
         }catch(SQLException E){
             
         }
-            //rs.close();
-            //preparedStatement.close();
-            //connection.close();
         for(Iterator<Usuario> it= usuarios.listIterator();it.hasNext();){
                     Usuario us=it.next();
                     System.out.println(""+us.getNombre());
@@ -59,15 +59,15 @@ public interface UsuarioDAO extends IDBConnection {
         try(Connection connection = conexionBd()){
           Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd       
           String query = "INSERT INTO " + TUSUARIO + " ("+TUSUARIO_ID+","+TUSUARIO_NOMBRE+","+TUSUARIO_USUARIO+","+TCONT_CONT+")"
-                                    +"VALUES ('"+7+"','"+usuario.getNombre()+"','"+usuario.getUsuario()+"','"+usuario.getPasswd()+"');";
+                                    +"VALUES ('NULL','"+usuario.getNombre()+"','"+usuario.getUsuario()+"','"+usuario.getPasswd()+"');";
            System.out.println(query);
            
-           if(statement.execute(query)){//statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
-               b=1;
-            }else{
+           if(statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
                b=0;
-            }
-			
+           }
+            statement.close();
+            connection.close();
+           
         } catch (SQLException e) {
                 e.printStackTrace();
         }
