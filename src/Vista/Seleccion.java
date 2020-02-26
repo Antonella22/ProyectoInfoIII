@@ -131,9 +131,8 @@ public class Seleccion extends javax.swing.JFrame {
 
     private void btnPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPapelActionPerformed
        
-        Tipo.setSel(0);
         this.setVisible(false);
-         new Tipo().setVisible(true);
+        new TipoPapel().setVisible(true);
 
         int id=1;
         //Usuario.Seleccion(id);
@@ -151,21 +150,21 @@ public class Seleccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstadisticasTActionPerformed
 
     private void btnVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVidrioActionPerformed
-        Tipo.setSel(1);
+
         this.setVisible(false);
-        new Tipo().setVisible(true);
+        new TipoVidrio().setVisible(true);
     }//GEN-LAST:event_btnVidrioActionPerformed
 
     private void btnOrganicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrganicoActionPerformed
-        Tipo.setSel(2);
+
         this.setVisible(false);
-        new Tipo().setVisible(true);
+        new TipoOrganico().setVisible(true);
     }//GEN-LAST:event_btnOrganicoActionPerformed
 
     private void btnPlasticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlasticoActionPerformed
-        Tipo.setSel(3);
+
         this.setVisible(false);
-        new Tipo().setVisible(true);
+        new TipoPlastico().setVisible(true);
     }//GEN-LAST:event_btnPlasticoActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

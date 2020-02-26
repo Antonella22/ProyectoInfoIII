@@ -29,7 +29,6 @@ public class Organico extends Desecho {
         tipo.add("Cascaras de fruta");
         tipo.add("Pan");
         tipo.add("Restos de comida");
-        tipo.add("Servilletas");
         tipo.add("Cascaron de huevo");
         tipo.add("Verduras y hortalizas");
         tipo.add("Otro");
