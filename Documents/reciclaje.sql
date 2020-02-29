@@ -73,7 +73,7 @@ create table RECICLA
 /*==============================================================*/
 create table USUARIO
 (
-   USUARIO              varchar(10) not null,
+   USUARIO              varchar(100) not null,
    NOMBRE_USUARIO       varchar(50) not null,
    CONTRASENA_USUARIO   varchar(20) not null,
    TIPO_USUARIO         char(10) not null,

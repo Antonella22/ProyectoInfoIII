@@ -134,9 +134,8 @@ public class Seleccion extends javax.swing.JFrame {
         this.setVisible(false);
         new TipoPapel().setVisible(true);
 
-        int id=1;
         //Usuario.Seleccion(id);
-        JOptionPane.showMessageDialog(this,"");
+       // JOptionPane.showMessageDialog(this,"");
         //System.out.println("PAPEL");
 
     }//GEN-LAST:event_btnPapelActionPerformed

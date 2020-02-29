@@ -19,10 +19,10 @@ public class TipoVidrio extends javax.swing.JFrame {
      */
     public TipoVidrio() {
         initComponents();
-        nombre();
+        titulo();
     }
     
-    public void nombre(){
+    public void titulo(){
          for(Iterator<String> it= Vidrio.getTipo_vidrio().listIterator();it.hasNext();){
              lbl_domestico.setText(it.next());
              lbl_industrial.setText(it.next());
@@ -52,10 +52,20 @@ public class TipoVidrio extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         btn_Domestico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vidrioDo.PNG"))); // NOI18N
+        btn_Domestico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DomesticoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_Domestico);
         btn_Domestico.setBounds(40, 80, 160, 150);
 
         btn_Industrial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vidrioInd.PNG"))); // NOI18N
+        btn_Industrial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IndustrialActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_Industrial);
         btn_Industrial.setBounds(230, 80, 160, 150);
 
@@ -80,6 +90,16 @@ public class TipoVidrio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_DomesticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DomesticoActionPerformed
+        // TODO add your handling code here:
+        System.out.println("VIDRIO DOMESTICO");
+    }//GEN-LAST:event_btn_DomesticoActionPerformed
+
+    private void btn_IndustrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IndustrialActionPerformed
+        // TODO add your handling code here:
+        System.out.println("VIDRIO INDUSTRIAL");
+    }//GEN-LAST:event_btn_IndustrialActionPerformed
 
     /**
      * @param args the command line arguments

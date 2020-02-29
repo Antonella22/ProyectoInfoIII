@@ -19,9 +19,10 @@ public class TipoPapel extends javax.swing.JFrame {
      */
     public TipoPapel() {
         initComponents();
+        titulo();
     }
     
-    public void nombre(){
+    public void titulo(){
          for(Iterator<String> it= Papel.getTipo_papel().listIterator();it.hasNext();){
              lbl_periodico.setText(it.next());
              lbl_carton.setText(it.next());
@@ -68,7 +69,7 @@ public class TipoPapel extends javax.swing.JFrame {
         lbl_periodico.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_periodico.setText("jLabel2");
         getContentPane().add(lbl_periodico);
-        lbl_periodico.setBounds(74, 230, 50, 20);
+        lbl_periodico.setBounds(70, 230, 70, 20);
 
         lbl_carton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_carton.setText("jLabel3");
@@ -100,10 +101,20 @@ public class TipoPapel extends javax.swing.JFrame {
         btn_periodico.setBounds(40, 80, 134, 146);
 
         btn_carton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carton.JPG"))); // NOI18N
+        btn_carton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cartonActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_carton);
         btn_carton.setBounds(200, 100, 150, 120);
 
         btn_cartulina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cartulina.JPG"))); // NOI18N
+        btn_cartulina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cartulinaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_cartulina);
         btn_cartulina.setBounds(380, 90, 140, 130);
 
@@ -134,15 +145,28 @@ public class TipoPapel extends javax.swing.JFrame {
 
     private void btn_periodicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_periodicoActionPerformed
         // TODO add your handling code here:
+        System.out.println("PAPEL PERIODICO");
     }//GEN-LAST:event_btn_periodicoActionPerformed
 
     private void btn_otroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otroActionPerformed
         // TODO add your handling code here:
+        System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
 
     private void btn_revistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_revistaActionPerformed
         // TODO add your handling code here:
+        System.out.println("PAPEL DE REVISTA");
     }//GEN-LAST:event_btn_revistaActionPerformed
+
+    private void btn_cartulinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cartulinaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("CARTULINA");
+    }//GEN-LAST:event_btn_cartulinaActionPerformed
+
+    private void btn_cartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cartonActionPerformed
+        // TODO add your handling code here:
+        System.out.println("CARTÓN");
+    }//GEN-LAST:event_btn_cartonActionPerformed
 
     /**
      * @param args the command line arguments

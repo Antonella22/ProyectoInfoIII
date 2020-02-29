@@ -19,9 +19,10 @@ public class TipoOrganico extends javax.swing.JFrame {
      */
     public TipoOrganico() {
         initComponents();
+        titulo();
     }
 
-    public void nombre(){
+    public void titulo(){
          for(Iterator<String> it= Organico.getTipo_organico().listIterator();it.hasNext();){
              lbl_fruta.setText(it.next());
              lbl_pan.setText(it.next());
@@ -70,7 +71,7 @@ public class TipoOrganico extends javax.swing.JFrame {
         lbl_fruta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_fruta.setText("jLabel2");
         getContentPane().add(lbl_fruta);
-        lbl_fruta.setBounds(50, 210, 70, 20);
+        lbl_fruta.setBounds(30, 210, 150, 20);
 
         lbl_pan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_pan.setText("jLabel3");
@@ -80,44 +81,74 @@ public class TipoOrganico extends javax.swing.JFrame {
         lbl_comida.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_comida.setText("jLabel4");
         getContentPane().add(lbl_comida);
-        lbl_comida.setBounds(380, 210, 80, 14);
+        lbl_comida.setBounds(370, 210, 150, 14);
 
         lbl_huevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_huevo.setText("jLabel5");
         getContentPane().add(lbl_huevo);
-        lbl_huevo.setBounds(50, 380, 60, 20);
+        lbl_huevo.setBounds(30, 380, 120, 20);
 
         lbl_verduras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_verduras.setText("jLabel6");
         getContentPane().add(lbl_verduras);
-        lbl_verduras.setBounds(210, 400, 80, 20);
+        lbl_verduras.setBounds(200, 400, 150, 20);
 
         lbl_otro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_otro.setText("jLabel7");
         getContentPane().add(lbl_otro);
-        lbl_otro.setBounds(410, 390, 50, 20);
+        lbl_otro.setBounds(410, 390, 60, 20);
 
         btn_fruta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fruta.JPG"))); // NOI18N
+        btn_fruta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_frutaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_fruta);
         btn_fruta.setBounds(40, 90, 127, 110);
 
         btn_pan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pan.JPG"))); // NOI18N
+        btn_pan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_panActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_pan);
         btn_pan.setBounds(210, 80, 120, 120);
 
         btn_comida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/comida.JPG"))); // NOI18N
+        btn_comida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_comidaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_comida);
         btn_comida.setBounds(370, 90, 120, 110);
 
         btn_huevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevo.JPG"))); // NOI18N
+        btn_huevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_huevoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_huevo);
         btn_huevo.setBounds(40, 260, 110, 110);
 
         btn_verduras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verduras.JPG"))); // NOI18N
+        btn_verduras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verdurasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_verduras);
         btn_verduras.setBounds(200, 250, 140, 140);
 
         btn_otro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otro.PNG"))); // NOI18N
+        btn_otro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_otroActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_otro);
         btn_otro.setBounds(370, 250, 120, 120);
 
@@ -128,6 +159,36 @@ public class TipoOrganico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_frutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_frutaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("CASCARAS DE FRUTA");
+    }//GEN-LAST:event_btn_frutaActionPerformed
+
+    private void btn_panActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_panActionPerformed
+        // TODO add your handling code here:
+        System.out.println("PAN");
+    }//GEN-LAST:event_btn_panActionPerformed
+
+    private void btn_comidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comidaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("RESTOS DE COMIDA");
+    }//GEN-LAST:event_btn_comidaActionPerformed
+
+    private void btn_huevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huevoActionPerformed
+        // TODO add your handling code here:
+        System.out.println("CASCARON DE HUEVO");
+    }//GEN-LAST:event_btn_huevoActionPerformed
+
+    private void btn_verdurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verdurasActionPerformed
+        // TODO add your handling code here:
+        System.out.println("VERDURAS Y HORTALIZAS");
+    }//GEN-LAST:event_btn_verdurasActionPerformed
+
+    private void btn_otroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otroActionPerformed
+        // TODO add your handling code here:+
+        System.out.println("OTRO");
+    }//GEN-LAST:event_btn_otroActionPerformed
 
     /**
      * @param args the command line arguments

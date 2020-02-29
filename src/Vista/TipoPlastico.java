@@ -19,10 +19,10 @@ public class TipoPlastico extends javax.swing.JFrame {
      */
     public TipoPlastico() {
         initComponents();
-        nombre();
+        titulo();
     }
 
-    public void nombre(){
+    public void titulo(){
          for(Iterator<String> it= Plastico.getTipo_plastico().listIterator();it.hasNext();){
              lbl_1.setText(it.next());
              lbl_2.setText(it.next());
@@ -43,19 +43,23 @@ public class TipoPlastico extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        lbl_1 = new javax.swing.JLabel();
         lbl_2 = new javax.swing.JLabel();
         lbl_3 = new javax.swing.JLabel();
         lbl_4 = new javax.swing.JLabel();
         lbl_5 = new javax.swing.JLabel();
-        btn_botella = new javax.swing.JButton();
         btn_bolsa = new javax.swing.JButton();
         btn_pitillo = new javax.swing.JButton();
         btn_desechable = new javax.swing.JButton();
         btn_otro = new javax.swing.JButton();
+        btn_botella = new javax.swing.JButton();
+        lbl_1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(540, 480));
+        setMinimumSize(new java.awt.Dimension(540, 480));
+        setPreferredSize(new java.awt.Dimension(540, 480));
+        setSize(new java.awt.Dimension(540, 480));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -63,15 +67,10 @@ public class TipoPlastico extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(140, 10, 250, 40);
 
-        lbl_1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbl_1.setText("jLabel2");
-        getContentPane().add(lbl_1);
-        lbl_1.setBounds(90, 210, 60, 15);
-
         lbl_2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbl_2.setText("v");
         getContentPane().add(lbl_2);
-        lbl_2.setBounds(220, 210, 70, 15);
+        lbl_2.setBounds(230, 210, 70, 15);
 
         lbl_3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbl_3.setText("jLabel4");
@@ -81,33 +80,63 @@ public class TipoPlastico extends javax.swing.JFrame {
         lbl_4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbl_4.setText("jLabel5");
         getContentPane().add(lbl_4);
-        lbl_4.setBounds(124, 380, 70, 15);
+        lbl_4.setBounds(114, 380, 80, 15);
 
         lbl_5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbl_5.setText("jLabel6");
         getContentPane().add(lbl_5);
         lbl_5.setBounds(300, 380, 70, 15);
 
-        btn_botella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botellas.PNG"))); // NOI18N
-        getContentPane().add(btn_botella);
-        btn_botella.setBounds(60, 90, 100, 110);
-
         btn_bolsa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bolsa.PNG"))); // NOI18N
+        btn_bolsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bolsaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_bolsa);
         btn_bolsa.setBounds(200, 80, 120, 120);
 
         btn_pitillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pitillo.PNG"))); // NOI18N
+        btn_pitillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pitilloActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_pitillo);
         btn_pitillo.setBounds(350, 80, 130, 120);
 
         btn_desechable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/desechables.PNG"))); // NOI18N
         btn_desechable.setText("\n\n");
+        btn_desechable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desechableActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_desechable);
         btn_desechable.setBounds(90, 250, 140, 120);
 
         btn_otro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/otro.PNG"))); // NOI18N
+        btn_otro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_otroActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_otro);
         btn_otro.setBounds(270, 250, 130, 130);
+
+        btn_botella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botella.PNG"))); // NOI18N
+        btn_botella.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_botellaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_botella);
+        btn_botella.setBounds(70, 80, 100, 110);
+
+        lbl_1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbl_1.setText("jLabel2");
+        getContentPane().add(lbl_1);
+        lbl_1.setBounds(90, 200, 60, 14);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tipoPlas.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -116,6 +145,31 @@ public class TipoPlastico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_botellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_botellaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("BOTELLA");
+    }//GEN-LAST:event_btn_botellaActionPerformed
+
+    private void btn_bolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bolsaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("BOLSA PLASTICA");
+    }//GEN-LAST:event_btn_bolsaActionPerformed
+
+    private void btn_pitilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pitilloActionPerformed
+        // TODO add your handling code here:
+        System.out.println("PITILLOS");
+    }//GEN-LAST:event_btn_pitilloActionPerformed
+
+    private void btn_desechableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desechableActionPerformed
+        // TODO add your handling code here:
+        System.out.println("DESECHABLES");
+    }//GEN-LAST:event_btn_desechableActionPerformed
+
+    private void btn_otroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otroActionPerformed
+        // TODO add your handling code here:
+        System.out.println("OTRO");
+    }//GEN-LAST:event_btn_otroActionPerformed
 
     /**
      * @param args the command line arguments
