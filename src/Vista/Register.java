@@ -62,13 +62,14 @@ public class Register extends javax.swing.JFrame {
         txtPass = new javax.swing.JPasswordField();
         icon = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
+        lblCorreo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(550, 370));
-        setMinimumSize(new java.awt.Dimension(550, 370));
+        setMaximumSize(new java.awt.Dimension(575, 370));
+        setMinimumSize(new java.awt.Dimension(575, 370));
         setResizable(false);
-        setSize(new java.awt.Dimension(550, 370));
+        setSize(new java.awt.Dimension(575, 370));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
@@ -99,7 +100,7 @@ public class Register extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(340, 140, 130, 24);
+        txtNombre.setBounds(340, 140, 100, 24);
 
         txtUser.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         getContentPane().add(txtUser);
@@ -139,12 +140,17 @@ public class Register extends javax.swing.JFrame {
         getContentPane().add(btnRegistrar);
         btnRegistrar.setBounds(270, 270, 100, 27);
 
+        lblCorreo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblCorreo.setText("@unicauca.edu.co");
+        getContentPane().add(lblCorreo);
+        lblCorreo.setBounds(450, 150, 108, 15);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Register.JPG"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(550, 370));
-        jLabel1.setMinimumSize(new java.awt.Dimension(550, 370));
-        jLabel1.setPreferredSize(new java.awt.Dimension(550, 370));
+        jLabel1.setMaximumSize(new java.awt.Dimension(560, 370));
+        jLabel1.setMinimumSize(new java.awt.Dimension(560, 370));
+        jLabel1.setPreferredSize(new java.awt.Dimension(560, 370));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 550, 370);
+        jLabel1.setBounds(0, 0, 590, 370);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,7 +163,7 @@ public class Register extends javax.swing.JFrame {
         
         if(!VerificarCampos()){
 
-            byte reg = (Usuario.registrarUsuario(txtNombre.getText(), txtUser.getText(), txtPass.getText()));
+            byte reg = (Usuario.registrarUsuario(txtNombre.getText()+lblCorreo.getText(), txtUser.getText(), txtPass.getText()));
 
             if(reg == 0 ){
                 //lblUser.setVisible(true);
@@ -236,6 +242,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;

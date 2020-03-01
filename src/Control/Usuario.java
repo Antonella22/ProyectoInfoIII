@@ -16,9 +16,10 @@ import java.util.Scanner;
  */
 public class Usuario implements UsuarioDAO {
     
-    protected String nombre;
-    protected String usuario;
-    protected String passwd;   
+    private String nombre;
+    private String usuario;
+    private String passwd;
+    private String tipo;
     static ArrayList <Usuario> listUs ;//= listaUsuarios();
     
     public Usuario() {
@@ -54,6 +55,14 @@ public class Usuario implements UsuarioDAO {
         this.passwd = passwd;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
     public static ArrayList<Usuario> getListUs() {
         return listUs;
     }

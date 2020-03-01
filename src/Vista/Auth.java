@@ -63,10 +63,10 @@ public class Auth extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         lbluser = new javax.swing.JLabel();
         lblpass = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(459, 469));
         setMinimumSize(new java.awt.Dimension(459, 469));
         setResizable(false);
         setSize(new java.awt.Dimension(459, 469));
@@ -85,12 +85,17 @@ public class Auth extends javax.swing.JFrame {
         lbPass.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
         lbPass.setText("Contraseña");
         getContentPane().add(lbPass);
-        lbPass.setBounds(60, 300, 79, 21);
+        lbPass.setBounds(60, 310, 79, 21);
 
         txtUser.setFont(new java.awt.Font("Candara", 0, 16)); // NOI18N
         txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtUserMouseClicked(evt);
+            }
+        });
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
             }
         });
         txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -99,7 +104,7 @@ public class Auth extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUser);
-        txtUser.setBounds(180, 260, 140, 27);
+        txtUser.setBounds(180, 260, 130, 27);
 
         btnLogin.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnLogin.setText("Login");
@@ -109,7 +114,7 @@ public class Auth extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(210, 360, 80, 27);
+        btnLogin.setBounds(190, 390, 80, 27);
 
         btnRegistro.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnRegistro.setText("Registarse");
@@ -142,26 +147,31 @@ public class Auth extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(180, 300, 130, 30);
+        txtPassword.setBounds(180, 310, 130, 30);
 
         lbluser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbluser.setForeground(new java.awt.Color(255, 51, 51));
         lbluser.setText("Ingresar usuario");
         getContentPane().add(lbluser);
-        lbluser.setBounds(340, 270, 100, 15);
+        lbluser.setBounds(180, 290, 100, 15);
 
         lblpass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblpass.setForeground(new java.awt.Color(255, 0, 0));
         lblpass.setText("Ingresar Contraseña");
         getContentPane().add(lblpass);
-        lblpass.setBounds(330, 305, 130, 20);
+        lblpass.setBounds(180, 340, 130, 20);
+
+        lblCorreo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblCorreo.setText("@unicauca.edu.co");
+        getContentPane().add(lblCorreo);
+        lblCorreo.setBounds(320, 260, 120, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(459, 469));
         jLabel1.setMinimumSize(new java.awt.Dimension(459, 469));
         jLabel1.setPreferredSize(new java.awt.Dimension(459, 469));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 459, 469);
+        jLabel1.setBounds(0, 0, 480, 469);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,7 +195,7 @@ public class Auth extends javax.swing.JFrame {
         
         if(!VerificarCampos()){
         
-            int log = Usuario.loginAuth(txtUser.getText(),txtPassword.getText());
+            int log = Usuario.loginAuth(txtUser.getText()+lblCorreo.getText(),txtPassword.getText());
             if(log==1){
                 limpiarCampos();
                 this.setVisible(false);
@@ -224,6 +234,10 @@ public class Auth extends javax.swing.JFrame {
            this.setVisible(false);
            new Register().setVisible(true);
     }//GEN-LAST:event_btnRegistroActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,6 +282,7 @@ public class Auth extends javax.swing.JFrame {
     private javax.swing.JLabel jlabel;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblpass;
     private javax.swing.JLabel lbluser;
     private javax.swing.JPasswordField txtPassword;

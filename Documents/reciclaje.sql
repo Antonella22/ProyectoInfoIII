@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26/02/2020 7:35:29 a. m.                     */
+/* Created on:     29/02/2020 9:14:27 p. m.                     */
 /*==============================================================*/
 
 
@@ -62,10 +62,10 @@ create table PLASTICO
 /*==============================================================*/
 create table RECICLA
 (
-   USUARIO              varchar(10) not null,
+   CORREO               varchar(100) not null,
    ID_DESECHO           int not null,
    CANTIDAD_DESECHO     int not null,
-   primary key (USUARIO, ID_DESECHO)
+   primary key (CORREO, ID_DESECHO)
 );
 
 /*==============================================================*/
@@ -73,11 +73,11 @@ create table RECICLA
 /*==============================================================*/
 create table USUARIO
 (
-   USUARIO              varchar(100) not null,
-   NOMBRE_USUARIO       varchar(50) not null,
+   CORREO               varchar(100) not null,
+   NOMBRE_USUARIO       varchar(100) not null,
    CONTRASENA_USUARIO   varchar(20) not null,
    TIPO_USUARIO         char(10) not null,
-   primary key (USUARIO)
+   primary key (CORREO)
 );
 
 /*==============================================================*/
@@ -102,8 +102,8 @@ alter table PLASTICO add constraint FK_TIPO4 foreign key (ID_DESECHO)
 alter table RECICLA add constraint FK_RECICLA foreign key (ID_DESECHO)
       references DESECHO (ID_DESECHO) on delete restrict on update restrict;
 
-alter table RECICLA add constraint FK_RECICLA2 foreign key (USUARIO)
-      references USUARIO (USUARIO) on delete restrict on update restrict;
+alter table RECICLA add constraint FK_RECICLA2 foreign key (CORREO)
+      references USUARIO (CORREO) on delete restrict on update restrict;
 
 alter table VIDRIO add constraint FK_TIPO foreign key (ID_DESECHO)
       references DESECHO (ID_DESECHO) on delete restrict on update restrict;
