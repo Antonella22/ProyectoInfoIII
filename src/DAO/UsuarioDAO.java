@@ -30,18 +30,18 @@ public interface UsuarioDAO extends IDBConnection {
         
         try(Connection connection = conexionBd()){
         
-        String query = "SELECT * FROM "+DB+".usuario;";
+        String query = "SELECT * FROM reciclaje.usuario;";
         System.out.println(query);
         
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
            
-        //ResultSet ayuda a iterar los datos del statemetn par aorganizarlos en objetos
+        //ResultSet ayuda a iterar los datos del statemetn para organizarlos en objetos
         while(rs.next()){
             Usuario usuario = new Usuario(
-                    rs.getString(TUSUARIO_NOMBRE),
-                    rs.getString(TUSUARIO_USUARIO),
-                    rs.getString(TCONT_CONT));
+                    rs.getString(CORREO),
+                    rs.getString(NOMBRE_USUARIO),
+                    rs.getString(CONTRASENA_USUARIO));
             usuarios.add(usuario);
             rs.close();
             preparedStatement.close();
@@ -50,98 +50,97 @@ public interface UsuarioDAO extends IDBConnection {
         }catch(SQLException E){
             
         }
-        for(Iterator<Usuario> it= usuarios.listIterator();it.hasNext();){
-                    Usuario us=it.next();
-                    System.out.println(""+us.getNombre());
-        } 
         return usuarios;
     }
      
-      default boolean verificarUsuario(String usuario){
+      default boolean loginUsuario(Usuario usuario){
           
         boolean b=false;
-        
+        String correo= null;
+        String contrasena= null;
+   
         try(Connection connection = conexionBd()){
             //SELECT usuario FROM datainfo.usuario where usuario="HH";
-            String query = "SELECT "+TUSUARIO_USUARIO+" FROM "+DB+".usuario where "+TUSUARIO_USUARIO+"='"+usuario+"';";
+            String query = "SELECT CORREO,CONTRASENA_USUARIO FROM reciclaje.usuario where CORREO=?";
             System.out.println(query);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, usuario.getCorreo());
             ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
-
-            //ResultSet ayuda a iterar los datos del statemetn par aorganizarlos en objetos
+            
+            //ResultSet ayuda a iterar los datos del statemetn para organizarlos en objetos
             while(rs.next()){
-                String us= new String(rs.getString(TUSUARIO_USUARIO));
-                System.out.println(""+us);
-
-                if(us==""){
-                    b=false;
-                }else{
-                    b=true;
-                }
-
-                rs.close();
-                preparedStatement.close();
-                connection.close();
+                    correo=rs.getString(CORREO);
+                    contrasena=rs.getString(CONTRASENA_USUARIO); 
+                    
             }
-           
-        }catch(SQLException E){
             
-        }
-        return b;
-    }
-      
-     default boolean verificarLogin(String usuario, String contraseña){
-            
-        boolean b = false;
-        
-        try(Connection connection = conexionBd()){
-        // SELECT usuario, contraseña FROM datainfo.usuario where usuario="anto"; 
-        String query = "SELECT "+TUSUARIO_USUARIO+","+TCONT_CONT+""+" FROM "+DB+"."+TUSUARIO_USUARIO+" where "+TUSUARIO_USUARIO+"='"+usuario+"';";
-        System.out.println(query);
-        
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
-           
-            //ResultSet ayuda a iterar los datos del statemetn par aorganizarlos en objetos
-            while(rs.next()){
-                String us= new String(rs.getString(TUSUARIO_USUARIO));
-                String cont= new String(rs.getString(TCONT_CONT));
- 
-                System.out.println(""+us + "" +cont);
-
-                if(us.equals(usuario)){ 
-                    if(cont.equals(contraseña)){
-                        b=true;
-                    }else{
-                        b=false;
-                    }
-                }
-                rs.close();
-                preparedStatement.close();
-                connection.close();
+            System.out.println(""+correo);
+            if(correo.equals(usuario.getCorreo()) && contrasena.equals(usuario.getPasswd())){
+                b=true;
             }
-       
-        }catch(SQLException E){
-            
-        }
-        
-        return b;
-    }
-     
-    default byte register(Usuario usuario){
-        byte b=0;
-        try(Connection connection = conexionBd()){
-          Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd       
-          String query = "INSERT INTO " + TUSUARIO + " ("+TUSUARIO_ID+","+TUSUARIO_NOMBRE+","+TUSUARIO_USUARIO+","+TCONT_CONT+")"
-                                    +"VALUES (NULL,'"+usuario.getNombre()+"','"+usuario.getUsuario()+"','"+usuario.getPasswd()+"');";
-           System.out.println(query);
-           
-           if(statement.executeUpdate(query)>0){			//Cantidad de rows afectadas
-               b=1;
-           }
-            statement.close();
+            if(correo== null){
+                b=false;
+            }
+                     
+            rs.close();
+            preparedStatement.close();
             connection.close();
            
+        }catch(SQLException E){
+            
+        }
+        return b;
+    }
+          
+    default boolean register(Usuario usuario){
+        
+        boolean b=false;
+        String correo="";
+        try(Connection connection = conexionBd()){
+            
+            String query = "SELECT CORREO FROM reciclaje.usuario where CORREO=?";
+            System.out.println(query);
+            //Statement statement = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd  
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, usuario.getCorreo());
+            ResultSet rs = preparedStatement.executeQuery();                            //Ejecuta el query y trae Datos
+            
+            //ResultSet ayuda a iterar los datos del statemetn para organizarlos en objetos
+            while(rs.next()){
+                correo=rs.getString(CORREO);      
+                System.out.println(""+correo);   
+            }
+            
+            if(correo==null){
+                b=false;
+            }
+            
+            if(!correo.equals(usuario.getCorreo())){
+                
+                PreparedStatement pS=null;
+
+                String query2 = "INSERT INTO usuario (CORREO,NOMBRE_USUARIO, CONTRASENA_USUARIO,TIPO_USUARIO)VALUES (?,?,?,?)";
+                System.out.println(query2);
+
+               //Statement sT = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd  
+                pS = connection.prepareStatement(query2);
+
+                pS.setString(1, usuario.getCorreo());
+                pS.setString(2, usuario.getNombre());
+                pS.setString(3, usuario.getPasswd());
+                pS.setString(4, "comun");
+                pS.execute();
+                pS.close();
+
+                b=true;
+
+               // sT.close();
+                pS.close();
+            }
+            
+            preparedStatement.close();
+            connection.close();
+            
         } catch (SQLException e) {
                 e.printStackTrace();
         }

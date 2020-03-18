@@ -6,10 +6,6 @@
 package DAO;
 
 import static BaseDatos.DataBase.DB;
-import static BaseDatos.DataBase.TCONT_CONT;
-import static BaseDatos.DataBase.*;
-import static BaseDatos.DataBase.TUSUARIO_NOMBRE;
-import static BaseDatos.DataBase.TUSUARIO_USUARIO;
 import BaseDatos.IDBConnection;
 import Control.Desecho;
 import Control.Usuario;

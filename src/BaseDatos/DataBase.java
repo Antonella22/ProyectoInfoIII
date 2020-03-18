@@ -15,16 +15,19 @@ public class DataBase {
     
     //Datos generales conexion a  BD
     public static final String URL 		= "jdbc:mysql://localhost:3306/";
-    public static final String DB 		= "datainfo";//?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    public static final String DB 		= "reciclaje";//?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public static final String USER             = "root";
     public static final String PASSWORD         = "toor";
 
     //Tabla Usuario
-    public static final String TUSUARIO		= "usuario";
-    public static final String TUSUARIO_ID	= "idusuario";
-    public static final String TUSUARIO_NOMBRE 	= "nombre";
-    public static final String TUSUARIO_USUARIO	= "usuario";
-    public static final String TCONT_CONT       = "contraseña";
+    public static final String USUARIO		= "usuario";
+    public static final String CORREO           = "CORREO";
+    public static final String NOMBRE_USUARIO	= "NOMBRE_USUARIO";
+    public static final String CONTRASENA_USUARIO= "CONTRASENA_USUARIO";
+    public static final String TIPO_USUARIO      = "TIPO_USUARIO";
+    
+    //tabla recicla
+    
     
     //Tabla desecho
     public static final String TDESECHO 	= "desecho";
@@ -33,6 +36,7 @@ public class DataBase {
     public static final String TDESECHO_PAPEL 	= "pape";
     public static final String TDESECHO_PLASTICO= "plastico";
     public static final String TDESECHO_ORGANICO= "organico";
-
+    
+     //public static final String query = "SELECT usuario FROM datainfo.usuario where usuario=?";
     
 }

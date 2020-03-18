@@ -130,14 +130,10 @@ public class Seleccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPapelActionPerformed
-       
+        
         this.setVisible(false);
         new TipoPapel().setVisible(true);
-
-        //Usuario.Seleccion(id);
-       // JOptionPane.showMessageDialog(this,"");
-        //System.out.println("PAPEL");
-
+        
     }//GEN-LAST:event_btnPapelActionPerformed
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed

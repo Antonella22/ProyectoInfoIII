@@ -16,8 +16,8 @@ import java.util.Scanner;
  */
 public class Usuario implements UsuarioDAO {
     
+    private String correo;
     private String nombre;
-    private String usuario;
     private String passwd;
     private String tipo;
     static ArrayList <Usuario> listUs ;//= listaUsuarios();
@@ -25,26 +25,31 @@ public class Usuario implements UsuarioDAO {
     public Usuario() {
     }
     
-    public Usuario(String nombre,String usuario, String pass){
+    public Usuario(String correo,String nombre, String pass){
+        this.correo=correo;
         this.nombre=nombre;
-        this.usuario=usuario;
         this.passwd=pass;
     }
+    
+    public Usuario(String correo, String pass){
+        this.correo=correo;
+        this.passwd=pass;
+    }  
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+   
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     public String getPasswd() {
@@ -75,104 +80,23 @@ public class Usuario implements UsuarioDAO {
         Usuario usuario = new Usuario();
 	return usuario.readDates();
     }
-    
-    public static byte registrar(String nombre,String txtUser,String txtPassword){
-        Usuario usuario = new Usuario(nombre, txtUser, txtPassword);
-        return usuario.register(usuario);
-    }
-    
-    public static  byte registrarUsuario(String nombre,String txtUser,String txtPassword){
+      
+    public static  boolean registrarUsuario(String txtCorreo,String txtNombre,String txtPassword){
         
-        Usuario usuario = new Usuario();
-        byte b=0;
-        
-        if(usuario.verificarUsuario(txtUser)){ 
-            b=0;
-        }
-        else {          
-             b=registrar(nombre,txtUser,txtPassword);      
-        }
+        boolean b=false;
+        Usuario usuario = new Usuario(txtCorreo,txtNombre,txtPassword);    
+        b=usuario.register(usuario);;     
         
         return b;
     }
     
-    public static int loginAuth(String txtUser,String txtPassword ){
+    public static boolean loginAuth(String txtCorreo,String txtPassword ){
          
-        Usuario usuario = new Usuario();
-
-        int b=0;
+        boolean b=false;
+        Usuario usuario = new Usuario(txtCorreo,txtPassword);
         
-            if(usuario.verificarUsuario(txtUser)){
-                    if(usuario.verificarLogin(txtUser, txtPassword)){
-                        b=1;  
-                    }else{
-                        b=3;
-                    }
-      
-            }else{
-                b=2;
-            }
-
+        b=usuario.loginUsuario(usuario);
+        
         return b;
-    }
-    
-    public static void login(){
-        
-        listaUsuarios();
-        System.out.println("Ingresar Usuario");
-        Scanner sc = new Scanner(System.in);
-	String user=sc.nextLine();
-        
-        //Recorrer y buscar usuario en lista para verificar existencia.
-        for(Iterator<Usuario> it= listUs.iterator();it.hasNext();){     
-                Usuario us=it.next();
-                if(us.getUsuario().equals(user)){     //Si usuario existe en la lista se muestran las siguientes opciones
-                    //Desecho.showOptions(user);       //tipo de usuario como parametro para mostrar las opciones           
-                }else{
-                    System.out.println("Usuario no Registrado, Registrarse primero \n");
-                    registrar();     
-                }
-        } 
-        
-    }
-    
-    public static void registrar(){
-      
-        listaUsuarios();
-        
-        Scanner sc = new Scanner(System.in);       
-        System.out.println("Registro de usuarios");
-        System.out.println("Ingrese el nombre del usuario");
-	String nombre =sc.nextLine();
-        System.out.println("Ingrese el usuario");
-	String user =sc.nextLine();
-        
-        //Se recorre la lista de usuarios para verificar que no se registren datos duplicados de usuarios.
-        try {
-            
-            for(Iterator<Usuario> it= listUs.listIterator();it.hasNext();){     
-            Usuario us=it.next();
-                if(us.getUsuario().equals(user)){    //Si el usuya existe, se deben ingresar un usuario nuevo
-                    System.out.println("Usuario Registrado ingrese un usuario diferente \n");
-                    registrar();        
-                }else{
-                    System.out.println("Ingrese contraseña");
-                    String pass =sc.nextLine();
-                    Usuario usuario = new Usuario(nombre,user,pass);
-                    listUs.add(usuario);
-                    System.out.println("Usuario Registrado  \n");
-                    login();
-                }
-            }      
-            
-        } catch (java.util.ConcurrentModificationException exception) {
-        // Catch ConcurrentModificationExceptions.
-         
-        } catch (Throwable throwable) {
-            // Catch any other Throwables.
-          
-        }
-        
-    }
-    
+    }    
 }

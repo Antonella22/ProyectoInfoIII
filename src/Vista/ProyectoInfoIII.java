@@ -49,11 +49,11 @@ public class ProyectoInfoIII {
                             exit = 0;
                             break;
                     case 1:
-                            Usuario.login();
+                            //Usuario.login();
                             break;
 
                     case 2:
-                            Usuario.registrar();
+                            //Usuario.registrar();
                             break;
                             
                     default:

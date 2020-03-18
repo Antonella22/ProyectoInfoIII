@@ -7,7 +7,6 @@ package Vista;
 
 import Control.Desecho;
 import Control.Usuario;
-import static Control.Usuario.registrar;
 import java.awt.Dimension;
 import java.util.Iterator;
 import java.util.Set;
@@ -27,13 +26,13 @@ public class Auth extends javax.swing.JFrame {
     }
 
     public void limpiarCampos(){
-        txtUser.setText("");
+        txtCorreo.setText("");
         txtPassword.setText("");
     }
     
     public boolean VerificarCampos(){
        
-        if(txtUser.getText().isEmpty()){
+        if(txtCorreo.getText().isEmpty()){
             lbluser.setVisible(true);
             return true;
         }else if(txtPassword.getText().isEmpty()){       
@@ -56,7 +55,7 @@ public class Auth extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         jlabel = new javax.swing.JLabel();
         lbPass = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         btnRegistro = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
@@ -78,7 +77,7 @@ public class Auth extends javax.swing.JFrame {
         lbTitulo.setBounds(190, 30, 115, 65);
 
         jlabel.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
-        jlabel.setText("Usuario");
+        jlabel.setText("Correo");
         getContentPane().add(jlabel);
         jlabel.setBounds(60, 260, 80, 21);
 
@@ -87,24 +86,24 @@ public class Auth extends javax.swing.JFrame {
         getContentPane().add(lbPass);
         lbPass.setBounds(60, 310, 79, 21);
 
-        txtUser.setFont(new java.awt.Font("Candara", 0, 16)); // NOI18N
-        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtCorreo.setFont(new java.awt.Font("Candara", 0, 16)); // NOI18N
+        txtCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtUserMouseClicked(evt);
+                txtCorreoMouseClicked(evt);
             }
         });
-        txtUser.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
             }
         });
-        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUserKeyPressed(evt);
+                txtCorreoKeyPressed(evt);
             }
         });
-        getContentPane().add(txtUser);
-        txtUser.setBounds(180, 260, 130, 27);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(180, 260, 130, 27);
 
         btnLogin.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnLogin.setText("Login");
@@ -176,10 +175,10 @@ public class Auth extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+    private void txtCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyPressed
 
         //lbluser.setVisible(false)
-    }//GEN-LAST:event_txtUserKeyPressed
+    }//GEN-LAST:event_txtCorreoKeyPressed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
        
@@ -194,21 +193,15 @@ public class Auth extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
         if(!VerificarCampos()){
-        
-            int log = Usuario.loginAuth(txtUser.getText()+lblCorreo.getText(),txtPassword.getText());
-            if(log==1){
+            
+            if(Usuario.loginAuth(txtCorreo.getText()+lblCorreo.getText(),txtPassword.getText())){
                 limpiarCampos();
                 this.setVisible(false);
-                new Seleccion().setVisible(true);     
-            }
-            if(log==2){
+                new Seleccion().setVisible(true);    
+            }else{
                 JOptionPane.showMessageDialog(null,"Usuario no registrado");
             }
-            if(log==3){
-                lblpass.setText("Contraseña incorrecta");
-                lblpass.setVisible(true);
-            }
-                    
+            
         }  
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -226,18 +219,18 @@ public class Auth extends javax.swing.JFrame {
         }         
     }//GEN-LAST:event_txtPasswordMouseClicked
 
-    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
+    private void txtCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMouseClicked
         lbluser.setVisible(false); 
-    }//GEN-LAST:event_txtUserMouseClicked
+    }//GEN-LAST:event_txtCorreoMouseClicked
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
            this.setVisible(false);
            new Register().setVisible(true);
     }//GEN-LAST:event_btnRegistroActionPerformed
 
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,7 +278,7 @@ public class Auth extends javax.swing.JFrame {
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblpass;
     private javax.swing.JLabel lbluser;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

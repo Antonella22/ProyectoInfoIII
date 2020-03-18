@@ -16,7 +16,7 @@ public class TipoPapel extends javax.swing.JFrame {
 
     /**
      * Creates new form TipoPapel
-     */
+     */ 
     public TipoPapel() {
         initComponents();
         titulo();

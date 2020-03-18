@@ -22,28 +22,26 @@ public class Register extends javax.swing.JFrame {
     }
     
     public void limpiarCampos(){
+        txtCorreo.setText("");
         txtNombre.setText("");
-        txtUser.setText("");
         txtPass.setText("");
     }
 
-      public boolean VerificarCampos(){
-       
-        if(txtUser.getText().isEmpty()){
+    public boolean VerificarCampos(){
+
+        if(txtNombre.getText().isEmpty()){
             // lblnombre.setVisible(true);  
             return true;
-        } 
-        if(txtUser.getText().isEmpty()){
+        }else if(txtNombre.getText().isEmpty()){
            //  lbluser.setVisible(true);
            return true;
-        } 
-        if(txtPass.getText().isEmpty()){
+        }else if(txtPass.getText().isEmpty()){
            // lblpass.setVisible(true);
            return true;
-        } 
-        
-        return false;
-    }
+        }else{
+            return false;
+        }     
+    }   
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -57,8 +55,8 @@ public class Register extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtUser = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
         icon = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
@@ -66,7 +64,6 @@ public class Register extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(575, 370));
         setMinimumSize(new java.awt.Dimension(575, 370));
         setResizable(false);
         setSize(new java.awt.Dimension(575, 370));
@@ -79,32 +76,32 @@ public class Register extends javax.swing.JFrame {
         jLabel2.setBounds(260, 50, 142, 45);
 
         jLabel5.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
-        jLabel5.setText("Nombre");
+        jLabel5.setText("Correo");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(220, 140, 70, 21);
 
         jLabel7.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
-        jLabel7.setText("Usuario");
+        jLabel7.setText("Nombre");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(220, 180, 54, 21);
+        jLabel7.setBounds(220, 180, 70, 21);
 
         jLabel8.setFont(new java.awt.Font("Candara", 1, 16)); // NOI18N
         jLabel8.setText("Contraseña");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(220, 220, 79, 21);
 
-        txtNombre.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtCorreo.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+                txtCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombre);
-        txtNombre.setBounds(340, 140, 100, 24);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(340, 140, 100, 24);
 
-        txtUser.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        getContentPane().add(txtUser);
-        txtUser.setBounds(340, 180, 130, 24);
+        txtNombre.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        getContentPane().add(txtNombre);
+        txtNombre.setBounds(340, 180, 130, 24);
 
         txtPass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtPass.setText("jPasswordField2");
@@ -155,27 +152,21 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
         if(!VerificarCampos()){
 
-            byte reg = (Usuario.registrarUsuario(txtNombre.getText()+lblCorreo.getText(), txtUser.getText(), txtPass.getText()));
-
-            if(reg == 0 ){
-                //lblUser.setVisible(true);
-                //lblUser.setText(Usuario ya existe);
-                JOptionPane.showMessageDialog(null, "Usuario ya existe");
-            }
-            if (reg == 1 ){              
+            if (Usuario.registrarUsuario(txtCorreo.getText()+lblCorreo.getText(), txtNombre.getText(), txtPass.getText())){
                 JOptionPane.showMessageDialog(null, "Usuario Registrado exitosamente");
                 this.setVisible(false);
                 new Auth().setVisible(true);
+            }else{
+                 JOptionPane.showMessageDialog(null, " ¡¡¡¡¡ ");
             }
-
         }
         
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -243,9 +234,9 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
 }
