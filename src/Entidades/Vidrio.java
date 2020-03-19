@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Entidades;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Antonella
  */
-public class Vidrio extends Desecho{
+public class Vidrio extends Reciclar{
     
     static ArrayList <String> tipo_vidrio = lista();
     

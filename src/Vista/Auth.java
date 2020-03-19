@@ -5,8 +5,9 @@
  */
 package Vista;
 
-import Control.Desecho;
-import Control.Usuario;
+import Controlador.UsuarioControlador;
+import Entidades.Reciclar;
+import Entidades.Usuario;
 import java.awt.Dimension;
 import java.util.Iterator;
 import java.util.Set;
@@ -18,11 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class Auth extends javax.swing.JFrame {
 
+    private UsuarioControlador uC;
+    String correo;
     
     public Auth() {
         initComponents();
         lbluser.setVisible(false); 
         lblpass.setVisible(false); 
+        uC = new UsuarioControlador();
     }
 
     public void limpiarCampos(){
@@ -194,7 +198,9 @@ public class Auth extends javax.swing.JFrame {
         
         if(!VerificarCampos()){
             
-            if(Usuario.loginAuth(txtCorreo.getText()+lblCorreo.getText(),txtPassword.getText())){
+            correo = txtCorreo.getText()+lblCorreo.getText();
+            
+            if(uC.loginAuth(txtCorreo.getText()+lblCorreo.getText(),txtPassword.getText())){
                 limpiarCampos();
                 this.setVisible(false);
                 new Seleccion().setVisible(true);    
@@ -234,7 +240,7 @@ public class Auth extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
-     */
+     */   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

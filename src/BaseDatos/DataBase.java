@@ -23,7 +23,7 @@ public class DataBase {
     public static final String USUARIO		= "usuario";
     public static final String CORREO           = "CORREO";
     public static final String NOMBRE_USUARIO	= "NOMBRE_USUARIO";
-    public static final String CONTRASENA_USUARIO= "CONTRASENA_USUARIO";
+    public static final String CONTRASENA_USUARIO= "CONTRASENIA_USUARIO";
     public static final String TIPO_USUARIO      = "TIPO_USUARIO";
     
     //tabla recicla

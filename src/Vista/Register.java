@@ -6,7 +6,8 @@
 
 package Vista;
 
-import Control.Usuario;
+import Controlador.UsuarioControlador;
+import Entidades.Usuario;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -17,8 +18,12 @@ import javax.swing.JOptionPane;
 public class Register extends javax.swing.JFrame {
 
     /** Creates new form Register */
+    private UsuarioControlador uC;
+    
     public Register() {
         initComponents();
+        uC = new UsuarioControlador();
+        
     }
     
     public void limpiarCampos(){
@@ -160,7 +165,7 @@ public class Register extends javax.swing.JFrame {
         
         if(!VerificarCampos()){
 
-            if (Usuario.registrarUsuario(txtCorreo.getText()+lblCorreo.getText(), txtNombre.getText(), txtPass.getText())){
+            if (uC.registrarUsuario(txtCorreo.getText()+lblCorreo.getText(), txtNombre.getText(), txtPass.getText())){
                 JOptionPane.showMessageDialog(null, "Usuario Registrado exitosamente");
                 this.setVisible(false);
                 new Auth().setVisible(true);

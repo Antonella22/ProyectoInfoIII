@@ -8,7 +8,7 @@ package DAO;
 import BaseDatos.DataBase;
 import static BaseDatos.DataBase.*;
 import BaseDatos.IDBConnection;
-import Control.Usuario;
+import Entidades.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +38,7 @@ public interface UsuarioDAO extends IDBConnection {
            
         //ResultSet ayuda a iterar los datos del statemetn para organizarlos en objetos
         while(rs.next()){
-            Usuario usuario = new Usuario(
+            Usuario usuario = new Usuario(  
                     rs.getString(CORREO),
                     rs.getString(NOMBRE_USUARIO),
                     rs.getString(CONTRASENA_USUARIO));
@@ -61,7 +61,7 @@ public interface UsuarioDAO extends IDBConnection {
    
         try(Connection connection = conexionBd()){
             //SELECT usuario FROM datainfo.usuario where usuario="HH";
-            String query = "SELECT CORREO,CONTRASENA_USUARIO FROM reciclaje.usuario where CORREO=?";
+            String query = "SELECT CORREO,CONTRASENIA_USUARIO FROM reciclaje.usuario where CORREO=?";
             System.out.println(query);
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, usuario.getCorreo());
@@ -108,18 +108,13 @@ public interface UsuarioDAO extends IDBConnection {
             //ResultSet ayuda a iterar los datos del statemetn para organizarlos en objetos
             while(rs.next()){
                 correo=rs.getString(CORREO);      
-                System.out.println(""+correo);   
             }
             
-            if(correo==null){
-                b=false;
-            }
-            
-            if(!correo.equals(usuario.getCorreo())){
+            if(correo==""){
                 
                 PreparedStatement pS=null;
 
-                String query2 = "INSERT INTO usuario (CORREO,NOMBRE_USUARIO, CONTRASENA_USUARIO,TIPO_USUARIO)VALUES (?,?,?,?)";
+                String query2 = "INSERT INTO usuario (CORREO,NOMBRE_USUARIO, CONTRASENIA_USUARIO,TIPO_USUARIO)VALUES (?,?,?,?)";
                 System.out.println(query2);
 
                //Statement sT = connection.createStatement(); 	//crear objeto para ejecutar acciones en bd  

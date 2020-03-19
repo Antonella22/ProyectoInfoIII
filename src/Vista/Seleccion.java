@@ -13,14 +13,23 @@ import javax.swing.JOptionPane;
  * @author Antonella
  */
 public class Seleccion extends javax.swing.JFrame {
-
+    
+    String correo;
     /**
      * Creates new form SeleccionUser
      */
     public Seleccion() {
         initComponents();
     }
-
+        
+    public void setCorreo(String correo){
+        this.correo=correo;
+    }
+    
+    public String getCorreo(){
+        return correo;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -5,7 +5,9 @@
  */
 package Vista;
 
-import Control.Vidrio;
+import Controlador.ReciclarControlador;
+import Entidades.Reciclar;
+import Entidades.Vidrio;
 import java.util.Iterator;
 
 /**
@@ -17,6 +19,8 @@ public class TipoVidrio extends javax.swing.JFrame {
     /**
      * Creates new form TipoVidrio
      */
+    ReciclarControlador rec = new ReciclarControlador();
+    
     public TipoVidrio() {
         initComponents();
         titulo();
@@ -92,12 +96,18 @@ public class TipoVidrio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_DomesticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DomesticoActionPerformed
-        // TODO add your handling code here:
+        int id=21;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("VIDRIO DOMESTICO");
     }//GEN-LAST:event_btn_DomesticoActionPerformed
 
     private void btn_IndustrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IndustrialActionPerformed
-        // TODO add your handling code here:
+        int id=22;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("VIDRIO INDUSTRIAL");
     }//GEN-LAST:event_btn_IndustrialActionPerformed
 

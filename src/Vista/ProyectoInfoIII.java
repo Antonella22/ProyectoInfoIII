@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Control.Usuario;
+import Entidades.Usuario;
 import java.util.Scanner;
 
 /**

@@ -5,7 +5,9 @@
  */
 package Vista;
 
-import Control.Plastico;
+import Controlador.ReciclarControlador;
+import Entidades.Plastico;
+import Entidades.Reciclar;
 import java.util.Iterator;
 
 /**
@@ -17,6 +19,8 @@ public class TipoPlastico extends javax.swing.JFrame {
     /**
      * Creates new form TipoPlastico
      */
+    ReciclarControlador rec = new ReciclarControlador();
+    
     public TipoPlastico() {
         initComponents();
         titulo();
@@ -147,27 +151,42 @@ public class TipoPlastico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_botellaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_botellaActionPerformed
-        // TODO add your handling code here:
+        int id=41;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("BOTELLA");
     }//GEN-LAST:event_btn_botellaActionPerformed
 
     private void btn_bolsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bolsaActionPerformed
-        // TODO add your handling code here:
+        int id=42;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("BOLSA PLASTICA");
     }//GEN-LAST:event_btn_bolsaActionPerformed
 
     private void btn_pitilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pitilloActionPerformed
-        // TODO add your handling code here:
+        int id= 43;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("PITILLOS");
     }//GEN-LAST:event_btn_pitilloActionPerformed
 
     private void btn_desechableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desechableActionPerformed
-        // TODO add your handling code here:
+        int id=44;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("DESECHABLES");
     }//GEN-LAST:event_btn_desechableActionPerformed
 
     private void btn_otroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otroActionPerformed
-        // TODO add your handling code here:
+        int id=45;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
 

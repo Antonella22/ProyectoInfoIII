@@ -3,22 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Entidades;
+
+import DAO.ReciclarDAO;
 
 
 /**
  *
  * @author Antonella
  */
-public class Desecho {
+public class Reciclar implements ReciclarDAO {
 
     protected int id_desecho;
     protected int cantidad;
 
-    public Desecho() {
+    public Reciclar() {
     }
 
-    public Desecho(int id_desecho, int cantidad) {
+    public Reciclar(int id_desecho, int cantidad) {
         this.id_desecho = id_desecho;
         this.cantidad = cantidad;
     }

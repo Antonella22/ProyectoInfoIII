@@ -5,7 +5,9 @@
  */
 package Vista;
 
-import Control.Papel;
+import Controlador.ReciclarControlador;
+import Entidades.Papel;
+import Entidades.Reciclar;
 import java.util.Iterator;
 
 /**
@@ -17,11 +19,15 @@ public class TipoPapel extends javax.swing.JFrame {
     /**
      * Creates new form TipoPapel
      */ 
+    Seleccion sel= new Seleccion();
+    ReciclarControlador rec = new ReciclarControlador();
+    String correo;
+    
     public TipoPapel() {
         initComponents();
         titulo();
     }
-    
+        
     public void titulo(){
          for(Iterator<String> it= Papel.getTipo_papel().listIterator();it.hasNext();){
              lbl_periodico.setText(it.next());
@@ -144,27 +150,46 @@ public class TipoPapel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_periodicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_periodicoActionPerformed
-        // TODO add your handling code here:
+        
+        int id=11;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("PAPEL PERIODICO");
     }//GEN-LAST:event_btn_periodicoActionPerformed
 
     private void btn_otroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otroActionPerformed
-        // TODO add your handling code here:
+        
+        int id=15;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
 
     private void btn_revistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_revistaActionPerformed
-        // TODO add your handling code here:
+        int id=14;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("PAPEL DE REVISTA");
     }//GEN-LAST:event_btn_revistaActionPerformed
 
     private void btn_cartulinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cartulinaActionPerformed
-        // TODO add your handling code here:
+        int id=13;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("CARTULINA");
     }//GEN-LAST:event_btn_cartulinaActionPerformed
 
     private void btn_cartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cartonActionPerformed
         // TODO add your handling code here:
+        int id=12;
+        
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("CARTÓN");
     }//GEN-LAST:event_btn_cartonActionPerformed
 

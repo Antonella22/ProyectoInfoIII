@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Entidades;
 
 import DAO.UsuarioDAO;
 import java.util.ArrayList;
@@ -80,23 +80,5 @@ public class Usuario implements UsuarioDAO {
         Usuario usuario = new Usuario();
 	return usuario.readDates();
     }
-      
-    public static  boolean registrarUsuario(String txtCorreo,String txtNombre,String txtPassword){
-        
-        boolean b=false;
-        Usuario usuario = new Usuario(txtCorreo,txtNombre,txtPassword);    
-        b=usuario.register(usuario);;     
-        
-        return b;
-    }
-    
-    public static boolean loginAuth(String txtCorreo,String txtPassword ){
-         
-        boolean b=false;
-        Usuario usuario = new Usuario(txtCorreo,txtPassword);
-        
-        b=usuario.loginUsuario(usuario);
-        
-        return b;
-    }    
+              
 }

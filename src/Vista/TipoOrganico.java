@@ -5,7 +5,9 @@
  */
 package Vista;
 
-import Control.Organico;
+import Controlador.ReciclarControlador;
+import Entidades.Organico;
+import Entidades.Reciclar;
 import java.util.Iterator;
 
 /**
@@ -17,6 +19,8 @@ public class TipoOrganico extends javax.swing.JFrame {
     /**
      * Creates new form TipoOrganico
      */
+    ReciclarControlador rec = new ReciclarControlador();
+    
     public TipoOrganico() {
         initComponents();
         titulo();
@@ -161,32 +165,50 @@ public class TipoOrganico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_frutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_frutaActionPerformed
-        // TODO add your handling code here:
+        int id= 31;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("CASCARAS DE FRUTA");
     }//GEN-LAST:event_btn_frutaActionPerformed
 
     private void btn_panActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_panActionPerformed
-        // TODO add your handling code here:
+        int id= 32;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("PAN");
     }//GEN-LAST:event_btn_panActionPerformed
 
     private void btn_comidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comidaActionPerformed
-        // TODO add your handling code here:
+        int id= 33;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("RESTOS DE COMIDA");
     }//GEN-LAST:event_btn_comidaActionPerformed
 
     private void btn_huevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_huevoActionPerformed
-        // TODO add your handling code here:
+        int id=34;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("CASCARON DE HUEVO");
     }//GEN-LAST:event_btn_huevoActionPerformed
 
     private void btn_verdurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verdurasActionPerformed
-        // TODO add your handling code here:
+        int id= 35;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("VERDURAS Y HORTALIZAS");
     }//GEN-LAST:event_btn_verdurasActionPerformed
 
     private void btn_otroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_otroActionPerformed
-        // TODO add your handling code here:+
+        int id=36;
+        Reciclar re = new Reciclar(id, 1);
+        
+        rec.agregarDes(re, "brahianf@unicauca.edu.co");
         System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
 
