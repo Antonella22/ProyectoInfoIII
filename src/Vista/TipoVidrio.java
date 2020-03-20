@@ -20,10 +20,13 @@ public class TipoVidrio extends javax.swing.JFrame {
      * Creates new form TipoVidrio
      */
     ReciclarControlador rec = new ReciclarControlador();
+    Auth a = new Auth();
     
     public TipoVidrio() {
         initComponents();
+        txtCorreo.setVisible(false);
         titulo();
+        txtCorreo.setText(a.correo);
     }
     
     public void titulo(){
@@ -47,12 +50,14 @@ public class TipoVidrio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lbl_domestico = new javax.swing.JLabel();
         lbl_industrial = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(440, 312));
-        setMinimumSize(new java.awt.Dimension(440, 312));
-        setSize(new java.awt.Dimension(440, 312));
+        setMaximumSize(new java.awt.Dimension(450, 350));
+        setMinimumSize(new java.awt.Dimension(450, 350));
+        setSize(new java.awt.Dimension(450, 350));
         getContentPane().setLayout(null);
 
         btn_Domestico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vidrioDo.PNG"))); // NOI18N
@@ -88,6 +93,20 @@ public class TipoVidrio extends javax.swing.JFrame {
         getContentPane().add(lbl_industrial);
         lbl_industrial.setBounds(280, 240, 60, 14);
 
+        txtCorreo.setText("jTextField1");
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(350, 20, 59, 20);
+
+        btnRegresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(333, 270, 90, 23);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tipovidrio.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(-150, -290, 590, 600);
@@ -99,7 +118,7 @@ public class TipoVidrio extends javax.swing.JFrame {
         int id=21;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("VIDRIO DOMESTICO");
     }//GEN-LAST:event_btn_DomesticoActionPerformed
 
@@ -107,9 +126,14 @@ public class TipoVidrio extends javax.swing.JFrame {
         int id=22;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("VIDRIO INDUSTRIAL");
     }//GEN-LAST:event_btn_IndustrialActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        new TipoVidrio().setVisible(false);
+        new Seleccion().setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +161,7 @@ public class TipoVidrio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TipoVidrio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -147,11 +172,13 @@ public class TipoVidrio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btn_Domestico;
     private javax.swing.JButton btn_Industrial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbl_domestico;
     private javax.swing.JLabel lbl_industrial;
+    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }

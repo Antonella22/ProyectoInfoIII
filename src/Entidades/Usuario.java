@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import DAO.EstadisticasDAO;
 import DAO.UsuarioDAO;
 import java.util.ArrayList;
 import java.util.Iterator;

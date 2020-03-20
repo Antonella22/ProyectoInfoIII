@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import DAO.EstadisticasDAO;
 import DAO.UsuarioDAO;
 import Entidades.Usuario;
 

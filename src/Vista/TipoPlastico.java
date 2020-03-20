@@ -20,10 +20,13 @@ public class TipoPlastico extends javax.swing.JFrame {
      * Creates new form TipoPlastico
      */
     ReciclarControlador rec = new ReciclarControlador();
+    Auth a = new Auth();
     
     public TipoPlastico() {
         initComponents();
+        txtCorreo.setVisible(false);
         titulo();
+        txtCorreo.setText(a.correo);
     }
 
     public void titulo(){
@@ -57,12 +60,12 @@ public class TipoPlastico extends javax.swing.JFrame {
         btn_otro = new javax.swing.JButton();
         btn_botella = new javax.swing.JButton();
         lbl_1 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(540, 480));
         setMinimumSize(new java.awt.Dimension(540, 480));
-        setPreferredSize(new java.awt.Dimension(540, 480));
         setSize(new java.awt.Dimension(540, 480));
         getContentPane().setLayout(null);
 
@@ -141,6 +144,18 @@ public class TipoPlastico extends javax.swing.JFrame {
         lbl_1.setText("jLabel2");
         getContentPane().add(lbl_1);
         lbl_1.setBounds(90, 200, 60, 14);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(420, 20, 6, 20);
+
+        btnRegresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(423, 390, 85, 23);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tipoPlas.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -154,7 +169,7 @@ public class TipoPlastico extends javax.swing.JFrame {
         int id=41;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("BOTELLA");
     }//GEN-LAST:event_btn_botellaActionPerformed
 
@@ -162,7 +177,7 @@ public class TipoPlastico extends javax.swing.JFrame {
         int id=42;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("BOLSA PLASTICA");
     }//GEN-LAST:event_btn_bolsaActionPerformed
 
@@ -170,7 +185,7 @@ public class TipoPlastico extends javax.swing.JFrame {
         int id= 43;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("PITILLOS");
     }//GEN-LAST:event_btn_pitilloActionPerformed
 
@@ -178,7 +193,7 @@ public class TipoPlastico extends javax.swing.JFrame {
         int id=44;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("DESECHABLES");
     }//GEN-LAST:event_btn_desechableActionPerformed
 
@@ -186,9 +201,14 @@ public class TipoPlastico extends javax.swing.JFrame {
         int id=45;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+       new TipoPlastico().setVisible(false);
+       new Seleccion().setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +236,7 @@ public class TipoPlastico extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TipoPlastico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -226,6 +247,7 @@ public class TipoPlastico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btn_bolsa;
     private javax.swing.JButton btn_botella;
     private javax.swing.JButton btn_desechable;
@@ -238,5 +260,6 @@ public class TipoPlastico extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_3;
     private javax.swing.JLabel lbl_4;
     private javax.swing.JLabel lbl_5;
+    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }

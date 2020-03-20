@@ -20,12 +20,17 @@ public class TipoOrganico extends javax.swing.JFrame {
      * Creates new form TipoOrganico
      */
     ReciclarControlador rec = new ReciclarControlador();
+   
+    Auth a = new Auth();
     
     public TipoOrganico() {
         initComponents();
+        txtCorreo.setVisible(false);
         titulo();
+        txtCorreo.setText(a.correo);
     }
 
+    
     public void titulo(){
          for(Iterator<String> it= Organico.getTipo_organico().listIterator();it.hasNext();){
              lbl_fruta.setText(it.next());
@@ -58,13 +63,14 @@ public class TipoOrganico extends javax.swing.JFrame {
         btn_huevo = new javax.swing.JButton();
         btn_verduras = new javax.swing.JButton();
         btn_otro = new javax.swing.JButton();
+        txtCorreo = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(550, 480));
-        setMinimumSize(new java.awt.Dimension(550, 480));
-        setPreferredSize(new java.awt.Dimension(550, 480));
-        setSize(new java.awt.Dimension(550, 480));
+        setMaximumSize(new java.awt.Dimension(600, 500));
+        setMinimumSize(new java.awt.Dimension(600, 500));
+        setSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -155,11 +161,23 @@ public class TipoOrganico extends javax.swing.JFrame {
         });
         getContentPane().add(btn_otro);
         btn_otro.setBounds(370, 250, 120, 120);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(430, 20, 90, 20);
+
+        btnRegresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(490, 420, 90, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tipoOrganico.jpg"))); // NOI18N
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 540, 450);
+        jLabel2.setBounds(0, 0, 590, 460);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -168,7 +186,7 @@ public class TipoOrganico extends javax.swing.JFrame {
         int id= 31;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("CASCARAS DE FRUTA");
     }//GEN-LAST:event_btn_frutaActionPerformed
 
@@ -176,7 +194,7 @@ public class TipoOrganico extends javax.swing.JFrame {
         int id= 32;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("PAN");
     }//GEN-LAST:event_btn_panActionPerformed
 
@@ -184,7 +202,7 @@ public class TipoOrganico extends javax.swing.JFrame {
         int id= 33;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("RESTOS DE COMIDA");
     }//GEN-LAST:event_btn_comidaActionPerformed
 
@@ -192,7 +210,7 @@ public class TipoOrganico extends javax.swing.JFrame {
         int id=34;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("CASCARON DE HUEVO");
     }//GEN-LAST:event_btn_huevoActionPerformed
 
@@ -200,7 +218,7 @@ public class TipoOrganico extends javax.swing.JFrame {
         int id= 35;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("VERDURAS Y HORTALIZAS");
     }//GEN-LAST:event_btn_verdurasActionPerformed
 
@@ -208,9 +226,14 @@ public class TipoOrganico extends javax.swing.JFrame {
         int id=36;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        new TipoOrganico().setVisible(false);
+        new Seleccion().setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,6 +261,7 @@ public class TipoOrganico extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TipoOrganico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -248,6 +272,7 @@ public class TipoOrganico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btn_comida;
     private javax.swing.JButton btn_fruta;
     private javax.swing.JButton btn_huevo;
@@ -262,5 +287,6 @@ public class TipoOrganico extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_otro;
     private javax.swing.JLabel lbl_pan;
     private javax.swing.JLabel lbl_verduras;
+    public javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }

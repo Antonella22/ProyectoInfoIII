@@ -20,7 +20,8 @@ import javax.swing.JOptionPane;
 public class Auth extends javax.swing.JFrame {
 
     private UsuarioControlador uC;
-    String correo;
+    public static String correo = "";
+    //TipoOrganico oTO = new TipoOrganico();
     
     public Auth() {
         initComponents();
@@ -131,7 +132,7 @@ public class Auth extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(180, 100, 128, 128);
+        jLabel5.setBounds(180, 100, 0, 0);
 
         txtPassword.setText("jPasswordField1");
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,16 +200,19 @@ public class Auth extends javax.swing.JFrame {
         if(!VerificarCampos()){
             
             correo = txtCorreo.getText()+lblCorreo.getText();
+            //oTO.txtCorreo.setText(correo);
             
             if(uC.loginAuth(txtCorreo.getText()+lblCorreo.getText(),txtPassword.getText())){
                 limpiarCampos();
                 this.setVisible(false);
                 new Seleccion().setVisible(true);    
             }else{
-                JOptionPane.showMessageDialog(null,"Usuario no registrado");
+                JOptionPane.showMessageDialog(null,"Datos incorrectos");
             }
             
-        }  
+        }
+        
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -263,6 +267,7 @@ public class Auth extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Auth.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

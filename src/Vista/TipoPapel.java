@@ -21,11 +21,13 @@ public class TipoPapel extends javax.swing.JFrame {
      */ 
     Seleccion sel= new Seleccion();
     ReciclarControlador rec = new ReciclarControlador();
-    String correo;
-    
+    Auth a = new Auth();
+
     public TipoPapel() {
         initComponents();
+        txtCorreo.setVisible(false);
         titulo();
+        txtCorreo.setText(a.correo);
     }
         
     public void titulo(){
@@ -58,12 +60,12 @@ public class TipoPapel extends javax.swing.JFrame {
         btn_cartulina = new javax.swing.JButton();
         btn_revista = new javax.swing.JButton();
         btn_otro = new javax.swing.JButton();
+        txtCorreo = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(565, 490));
         setMinimumSize(new java.awt.Dimension(565, 490));
-        setPreferredSize(new java.awt.Dimension(565, 490));
         setSize(new java.awt.Dimension(565, 490));
         getContentPane().setLayout(null);
 
@@ -141,6 +143,18 @@ public class TipoPapel extends javax.swing.JFrame {
         });
         getContentPane().add(btn_otro);
         btn_otro.setBounds(300, 280, 120, 120);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(440, 30, 6, 20);
+
+        btnRegresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(453, 410, 90, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PAPEL ARRUGADO.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -154,7 +168,7 @@ public class TipoPapel extends javax.swing.JFrame {
         int id=11;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("PAPEL PERIODICO");
     }//GEN-LAST:event_btn_periodicoActionPerformed
 
@@ -163,7 +177,7 @@ public class TipoPapel extends javax.swing.JFrame {
         int id=15;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("OTRO");
     }//GEN-LAST:event_btn_otroActionPerformed
 
@@ -171,7 +185,7 @@ public class TipoPapel extends javax.swing.JFrame {
         int id=14;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("PAPEL DE REVISTA");
     }//GEN-LAST:event_btn_revistaActionPerformed
 
@@ -179,7 +193,7 @@ public class TipoPapel extends javax.swing.JFrame {
         int id=13;
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("CARTULINA");
     }//GEN-LAST:event_btn_cartulinaActionPerformed
 
@@ -189,9 +203,14 @@ public class TipoPapel extends javax.swing.JFrame {
         
         Reciclar re = new Reciclar(id, 1);
         
-        rec.agregarDes(re, "brahianf@unicauca.edu.co");
+        rec.agregarDes(re, txtCorreo.getText());
         System.out.println("CARTÓN");
     }//GEN-LAST:event_btn_cartonActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        new TipoPapel().setVisible(false);
+        new Seleccion().setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +238,7 @@ public class TipoPapel extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TipoPapel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -229,6 +249,7 @@ public class TipoPapel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btn_carton;
     private javax.swing.JButton btn_cartulina;
     private javax.swing.JButton btn_otro;
@@ -241,5 +262,6 @@ public class TipoPapel extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_otro;
     private javax.swing.JLabel lbl_periodico;
     private javax.swing.JLabel lbl_revista;
+    private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }

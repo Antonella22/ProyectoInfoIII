@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import DAO.EstadisticasDAO;
 import DAO.ReciclarDAO;
 
 
@@ -12,7 +13,7 @@ import DAO.ReciclarDAO;
  *
  * @author Antonella
  */
-public class Reciclar implements ReciclarDAO {
+public class Reciclar implements ReciclarDAO , EstadisticasDAO {
 
     protected int id_desecho;
     protected int cantidad;

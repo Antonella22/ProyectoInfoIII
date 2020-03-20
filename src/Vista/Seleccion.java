@@ -47,11 +47,11 @@ public class Seleccion extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnEstadisticas = new javax.swing.JButton();
         btnEstadisticasT = new javax.swing.JButton();
+        txtCorreo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(640, 510));
         setMinimumSize(new java.awt.Dimension(640, 510));
         setResizable(false);
         setSize(new java.awt.Dimension(640, 510));
@@ -127,6 +127,8 @@ public class Seleccion extends javax.swing.JFrame {
         });
         getContentPane().add(btnEstadisticasT);
         btnEstadisticasT.setBounds(500, 110, 115, 31);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(520, 180, 6, 20);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seleccion.jpg"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(640, 500));
@@ -146,7 +148,8 @@ public class Seleccion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPapelActionPerformed
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new EstadisticasU().setVisible(true);
     }//GEN-LAST:event_btnEstadisticasActionPerformed
 
     private void btnEstadisticasTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasTActionPerformed
@@ -202,6 +205,8 @@ public class Seleccion extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -221,5 +226,6 @@ public class Seleccion extends javax.swing.JFrame {
     private javax.swing.JButton btnVidrio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables
 }

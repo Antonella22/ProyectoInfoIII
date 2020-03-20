@@ -16,8 +16,8 @@ public class DataBase {
     //Datos generales conexion a  BD
     public static final String URL 		= "jdbc:mysql://localhost:3306/";
     public static final String DB 		= "reciclaje";//?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    public static final String USER             = "root";
-    public static final String PASSWORD         = "toor";
+    public static final String USER             = "telematica";
+    public static final String PASSWORD         = "ttm123";
 
     //Tabla Usuario
     public static final String USUARIO		= "usuario";

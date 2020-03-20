@@ -130,7 +130,7 @@ public class Register extends javax.swing.JFrame {
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/add.png"))); // NOI18N
         getContentPane().add(icon);
-        icon.setBounds(60, 120, 128, 128);
+        icon.setBounds(60, 120, 0, 0);
 
         btnRegistrar.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
         btnRegistrar.setText("Registrar");
@@ -220,6 +220,7 @@ public class Register extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
